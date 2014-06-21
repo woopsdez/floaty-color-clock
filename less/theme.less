@@ -24,13 +24,12 @@ ul,ol{
 	line-height: 1;
 	.hm{
 		display: inline-block;
-		position: relative;
-		left: -50px;
 	}
 	.dw{
 		display :block;
-		font-family: "Roboto-Bold";
+		font-family: "Roboto-Light";
 		font-size: 50px;
+		margin-left: 14px;
 	}
 	#blink{
 		position: relative;
@@ -63,19 +62,25 @@ ul,ol{
 		border-top: 1px solid;
 		li{
 			display: inline-block;
-			width: 19%;
+			width: 24%;
 			margin: -40px 0 0 0;
 			padding: 0;
 			vertical-align: top;
 			text-align: center;
-			time,img,.temp-c{
+			time,img,.rainfall{
 				display: block;
 				margin: 0 auto;
+			}
+			time{
+				small {
+					padding-left: 5px;
+					font-size: 16px;
+				}
 			}
 			.icon{
 				min-height: 60px;
 			}
-			.temp-c{
+			.rainfall{
 				font-family: Roboto-Bold;
 				font-size: 20px;
 				color: #FFFFFF;
@@ -225,7 +230,7 @@ body{
 }
 
 #blink {
-			    animation-duration: 6s;
+			    animation-duration: 10s;
 			    animation-delay: 1s;
 			    animation-iteration-count: infinite;
   -webkit-animation-duration: 6s;

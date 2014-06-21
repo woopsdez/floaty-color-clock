@@ -19,13 +19,12 @@ ol {
 }
 .clock .hm {
   display: inline-block;
-  position: relative;
-  left: -50px;
 }
 .clock .dw {
   display: block;
-  font-family: "Roboto-Bold";
+  font-family: "Roboto-Light";
   font-size: 50px;
+  margin-left: 14px;
 }
 .clock #blink {
   position: relative;
@@ -57,7 +56,7 @@ ol {
 }
 .temparature ul li {
   display: inline-block;
-  width: 19%;
+  width: 24%;
   margin: -40px 0 0 0;
   padding: 0;
   vertical-align: top;
@@ -65,14 +64,18 @@ ol {
 }
 .temparature ul li time,
 .temparature ul li img,
-.temparature ul li .temp-c {
+.temparature ul li .rainfall {
   display: block;
   margin: 0 auto;
+}
+.temparature ul li time small {
+  padding-left: 5px;
+  font-size: 16px;
 }
 .temparature ul li .icon {
   min-height: 60px;
 }
-.temparature ul li .temp-c {
+.temparature ul li .rainfall {
   font-family: Roboto-Bold;
   font-size: 20px;
   color: #FFFFFF;
@@ -258,7 +261,7 @@ body {
   animation-duration: 5s;
 }
 #blink {
-  animation-duration: 6s;
+  animation-duration: 10s;
   animation-delay: 1s;
   animation-iteration-count: infinite;
   -webkit-animation-duration: 6s;

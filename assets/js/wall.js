@@ -1,7 +1,7 @@
 // ----- 関数群 -----
 
 // 時間取得
-var getTime = function(){
+function getTime () {
 	var days = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
 	var d = new Date; // インスタンス作成
 
@@ -32,18 +32,55 @@ var getTime = function(){
 }
 
 // HTMLを書き換える
-var overWrite = function(id, replaceText) {
-  var hm;
-  hm = document.getElementById(id);
-  return hm.innerHTML = replaceText;
+function overWrite (element, replaceText){
+  $(element).text(replaceText)
 };
 
 // 取得した時間をHTMLに書き込む
-var refleshTime = function(){
+function refleshTime (){
 	var t = getTime();
-	overWrite("numH", t.hours);
-	overWrite("numM", t.seconds);
-	overWrite("dw", t.mdw);
+	$("#numH").text(t.hours);
+	$("#numM").text(t.minutes);
+	$("#dw").text(t.mdw);
+}
+
+// 天気情報を取得
+drk7jpweather = { // objectを定義
+	"callback" : function (json) { // 無名関数でcallbackを定義
+		
+		// --- データ取得 ---
+		// 降水確立を取得
+		var period = json.pref.area["東京地方"].info[0].rainfallchance.period; //長いので一時格納				
+
+		// 処理用の変数や配列に格納
+		var data, num, iconImg, max, min, average;
+
+		// 長ったらしいパスを格納
+		// -- TODO 処理部分HTMLにclassを入れて短縮する --
+		var time = $(".temparature ul li time")
+		var icon = $(".icon img")
+		var rainNum = $(".rainfall")
+
+		for (var i = 0; i < period.length; i++) { // periodに格納している数だけ繰り返す
+			data = period[i]; // periodをdataに入れる
+			// --- 天気の処理 ---
+			// 降水確立の数字をアイコンにマッピング
+			if ( data.content == 0 ) {
+					iconImg = "sunny.svg";
+			}else
+				if (data.content >= 10 ) {
+					iconImg = "cloudy.svg"
+			}else
+				if (data.content >= 50){
+					iconImg = "rainy.svg"
+			}else{
+					iconImg = "none.png"
+			};
+
+			$(icon[i]).attr("src","assets/img/"+iconImg)
+			$(rainNum[i]).text(data.content+"%")			
+		};
+	}
 }
 
 refleshTime();
@@ -51,7 +88,7 @@ setInterval(refleshTime,1000);
 
 // animation
 
-$('#blink').addClass('fadeInUp flash')
+$('#blink').addClass('flash')
 $('.fade-in-6').addClass('fadeInUp');
 $('.fade-in-7').addClass('fadeInUp');
 
