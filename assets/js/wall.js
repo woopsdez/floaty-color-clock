@@ -50,6 +50,11 @@ refleshTime();
 setInterval(refleshTime,1000);
 
 // animation
+
+$('#blink').addClass('fadeInUp flash')
+$('.fade-in-6').addClass('fadeInUp');
+$('.fade-in-7').addClass('fadeInUp');
+
 // .temparature ul liにアニメーション管理用のclassを付与
 $(function(){
   $('.temparature ul li').each(function(i){ 
@@ -57,6 +62,3 @@ $(function(){
     $(this).addClass('animated bounceIn'); // animation用のclass付与
   });
 });
-$('.fade-in-6').addClass('animated fadeInUp');
-$('.fade-in-7').addClass('animated fadeInUp');
-$('#blink').addClass('animated flash')
