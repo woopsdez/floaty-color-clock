@@ -1,0 +1,132 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,500,700);
+
+body{
+	margin-top: 90px;
+	padding: 5%;
+	color: #fff;
+	font-family: "Robot-Light";
+	background: #488F9C;
+}
+
+ul,ol{
+	list-style-type: none;
+}
+
+// ------------------
+// layout
+// ------------------
+
+.clock{
+	float: left;
+	font-family: "Roboto-Light";
+	font-size: 300px;
+	color: #FFFFFF;
+	line-height: 1;
+	.hm{
+		display: inline-block;
+		position: relative;
+		left: -50px;
+	}
+	.dw{
+		display :block;
+		font-family: "Roboto-Bold";
+		font-size: 50px;
+	}
+	#blink{
+		position: relative;
+		top: -30px;
+	}
+}
+
+.schedule{
+	margin-top: 40px;
+	font-family: "Roboto-Light";
+	font-size: 30px;
+	color: #FFFFFF;
+	line-height: 2;
+	opacity: 0.5;
+	ol{
+		list-style-type: none;
+	}
+}
+
+.temparature{
+	clear: both;
+	padding-top: 20px;
+	ul{
+		padding: 0;
+		padding-top: 20px;
+		font-family: Roboto-Bold;
+		font-size: 30px;
+		color: #FFFFFF;
+		line-height: 39px;
+		border-top: 1px solid;
+		li{
+			display: inline-block;
+			width: 19%;
+			margin: -40px 0 0 0;
+			padding: 0;
+			vertical-align: top;
+			text-align: center;
+			time,img,.temp-c{
+				display: block;
+				margin: 0 auto;
+			}
+			.icon{
+				min-height: 60px;
+			}
+			.temp-c{
+				font-family: Roboto-Bold;
+				font-size: 20px;
+				color: #FFFFFF;
+				line-height: 26px;
+			}
+		}
+		li:before{
+			display: block;
+			content: "・";
+		}
+	}
+}
+
+// ------------------
+// animation
+// ------------------
+
+.fade-in-1{
+			    animation-delay: 1s;
+  -webkit-animation-delay: 1s;
+}
+.fade-in-2{
+			    animation-delay: 1.1s;
+  -webkit-animation-delay: 1.1s;
+}
+.fade-in-3{
+			    animation-delay: 1.2s;
+  -webkit-animation-delay: 1.2s;
+}
+.fade-in-4{
+			    animation-delay: 1.3s;
+  -webkit-animation-delay: 1.3s;
+}
+.fade-in-5{
+			    animation-delay: 1.4s;
+  -webkit-animation-delay: 1.4s;
+}
+.fade-in-6{
+
+}
+
+.fade-in-7{
+			    animation-delay: 0.3s;
+  -webkit-animation-delay: 0.3s;
+}
+
+#blink {
+			    animation-duration: 6s;
+			    animation-delay: 1s;
+			    animation-iteration-count: infinite;
+  -webkit-animation-duration: 6s;
+  -webkit-animation-delay: 1s;
+  -webkit-animation-iteration-count: infinite;
+}

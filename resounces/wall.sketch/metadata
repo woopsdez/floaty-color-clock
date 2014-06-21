@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>app</key>
+	<string>com.bohemiancoding.sketch3.beta</string>
+	<key>build</key>
+	<integer>7942</integer>
+	<key>commit</key>
+	<string>9320a0ca27f7d0950cff5fbc971968442f587dbf</string>
+	<key>fonts</key>
+	<array>
+		<string>Helvetica-Light</string>
+		<string>Roboto-Bold</string>
+		<string>LucidaGrande-Bold</string>
+		<string>HiraKakuProN-W3</string>
+		<string>Roboto-Regular</string>
+	</array>
+	<key>length</key>
+	<integer>155557</integer>
+	<key>version</key>
+	<integer>37</integer>
+</dict>
+</plist>
