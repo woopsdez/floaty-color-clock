@@ -1,0 +1,78 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,500,700);
+body {
+  margin-top: 90px;
+  padding: 5%;
+  color: #fff;
+  font-family: Robot-Medium;
+  background: #488F9C;
+}
+ul,
+ol {
+  list-style-type: none;
+}
+.clock {
+  float: left;
+  font-family: "Roboto-Light";
+  font-size: 300px;
+  color: #FFFFFF;
+  line-height: 1;
+}
+.clock .hm {
+  display: inline-block;
+  position: relative;
+  left: -50px;
+}
+.clock .dw {
+  display: block;
+  font-family: "Roboto-Bold";
+  font-size: 50px;
+}
+.schedule {
+  margin-top: 40px;
+  font-family: Roboto-Bold;
+  font-size: 30px;
+  color: #FFFFFF;
+  line-height: 2;
+  opacity: 0.5;
+}
+.schedule ol {
+  list-style-type: none;
+}
+.temparature {
+  clear: both;
+  padding-top: 20px;
+}
+.temparature ul {
+  padding: 0;
+  padding-top: 20px;
+  font-family: Roboto-Bold;
+  font-size: 30px;
+  color: #FFFFFF;
+  line-height: 39px;
+  border-top: 1px solid;
+}
+.temparature ul li {
+  display: inline-block;
+  width: 19.6%;
+  text-align: center;
+}
+.temparature ul li time,
+.temparature ul li img,
+.temparature ul li .temp-c {
+  display: block;
+  margin: 0 auto;
+}
+.temparature ul li .temp-c {
+  font-family: Roboto-Bold;
+  font-size: 20px;
+  color: #FFFFFF;
+  line-height: 26px;
+}
+.temparature ul li.first-child {
+  text-align: left;
+  border: 1px solid;
+}
+.temparature ul li.last-child {
+  text-align: right;
+  border: 1px solid;
+}
