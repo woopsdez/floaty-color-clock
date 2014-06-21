@@ -57,7 +57,7 @@ drk7jpweather = { // objectを定義
 
 		// 長ったらしいパスを格納
 		// -- TODO 処理部分HTMLにclassを入れて短縮する --
-		var time = $(".temparature ul li time")
+		var time = $(".weather ul li time")
 		var icon = $(".icon img")
 		var rainNum = $(".rainfall")
 
@@ -92,9 +92,9 @@ $('#blink').addClass('flash')
 $('.fade-in-6').addClass('fadeInUp');
 $('.fade-in-7').addClass('fadeInUp');
 
-// .temparature ul liにアニメーション管理用のclassを付与
+// .weather ul liにアニメーション管理用のclassを付与
 $(function(){
-  $('.temparature ul li').each(function(i){ 
+  $('.weather ul li').each(function(i){ 
     $(this).attr('class','fade-in-' + (i+1)); //fade-inの連番Classを振る
     $(this).addClass('animated bounceIn'); // animation用のclass付与
   });

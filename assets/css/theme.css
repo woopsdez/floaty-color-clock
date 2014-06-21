@@ -1,7 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,300,500,700);
 body {
   margin-top: 90px;
-  padding: 5%;
   color: #fff;
   font-family: "Robot-Light";
   background: #488F9C;
@@ -11,13 +10,22 @@ ol {
   list-style-type: none;
 }
 .clock {
+  width: 100%;
   float: left;
+  padding: 5%;
   font-family: "Roboto-Light";
-  font-size: 300px;
+  font-size: 150px;
   color: #FFFFFF;
   line-height: 1;
 }
+@media screen and (min-width: 768px) {
+  .clock {
+    font-size: 300px;
+    border: none;
+  }
+}
 .clock .hm {
+  width: 100%;
   display: inline-block;
 }
 .clock .dw {
@@ -26,11 +34,8 @@ ol {
   font-size: 50px;
   margin-left: 14px;
 }
-.clock #blink {
-  position: relative;
-  top: -30px;
-}
 .schedule {
+  display: none;
   margin-top: 40px;
   font-family: "Roboto-Light";
   font-size: 30px;
@@ -41,11 +46,11 @@ ol {
 .schedule ol {
   list-style-type: none;
 }
-.temparature {
+.weather {
   clear: both;
   padding-top: 20px;
 }
-.temparature ul {
+.weather ul {
   padding: 0;
   padding-top: 20px;
   font-family: Roboto-Bold;
@@ -54,43 +59,43 @@ ol {
   line-height: 39px;
   border-top: 1px solid;
 }
-.temparature ul li {
+.weather ul li {
   display: inline-block;
-  width: 24%;
+  width: 23%;
   margin: -40px 0 0 0;
   padding: 0;
   vertical-align: top;
   text-align: center;
 }
-.temparature ul li time,
-.temparature ul li img,
-.temparature ul li .rainfall {
+.weather ul li time,
+.weather ul li img,
+.weather ul li .rainfall {
   display: block;
   margin: 0 auto;
 }
-.temparature ul li time small {
+.weather ul li time small {
   padding-left: 5px;
   font-size: 16px;
 }
-.temparature ul li .icon {
+.weather ul li .icon {
   min-height: 60px;
 }
-.temparature ul li .rainfall {
+.weather ul li .rainfall {
   font-family: Roboto-Bold;
   font-size: 20px;
   color: #FFFFFF;
   line-height: 26px;
 }
-.temparature ul li:before {
+.weather ul li:before {
   display: block;
   content: "・";
 }
 body {
-  -webkit-animation: color_change 120s infinite alternate;
-  -moz-animation: color_change 120s infinite alternate;
-  -ms-animation: color_change 120s infinite alternate;
-  -o-animation: color_change 120s infinite alternate;
-  animation: color_change 120s infinite alternate;
+  -webkit-animation: color_change 216000s infinite alternate;
+  -moz-animation: color_change 216000s infinite alternate;
+  -ms-animation: color_change 216000s infinite alternate;
+  -o-animation: color_change 216000s infinite alternate;
+  animation: color_change 216000s infinite alternate;
 }
 @-webkit-keyframes color_change {
   0% {

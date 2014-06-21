@@ -2,7 +2,6 @@
 
 body{
 	margin-top: 90px;
-	padding: 5%;
 	color: #fff;
 	font-family: "Robot-Light";
 	background: #488F9C;
@@ -17,12 +16,19 @@ ul,ol{
 // ------------------
 
 .clock{
+	width: 100%;
 	float: left;
+	padding: 5%;
 	font-family: "Roboto-Light";
-	font-size: 300px;
+	font-size: 150px;
 	color: #FFFFFF;
 	line-height: 1;
+	@media screen and (min-width: 768px) {
+		font-size: 300px;
+		border: none;
+	}
 	.hm{
+		width: 100%;
 		display: inline-block;
 	}
 	.dw{
@@ -31,13 +37,10 @@ ul,ol{
 		font-size: 50px;
 		margin-left: 14px;
 	}
-	#blink{
-		position: relative;
-		top: -30px;
-	}
 }
 
 .schedule{
+	display: none;
 	margin-top: 40px;
 	font-family: "Roboto-Light";
 	font-size: 30px;
@@ -49,7 +52,7 @@ ul,ol{
 	}
 }
 
-.temparature{
+.weather{
 	clear: both;
 	padding-top: 20px;
 	ul{
@@ -62,7 +65,7 @@ ul,ol{
 		border-top: 1px solid;
 		li{
 			display: inline-block;
-			width: 24%;
+			width: 23%;
 			margin: -40px 0 0 0;
 			padding: 0;
 			vertical-align: top;
@@ -99,11 +102,11 @@ ul,ol{
 // ------------------
 
 body{
-	-webkit-animation: color_change 120s infinite alternate;
-  -moz-animation: color_change 120s infinite alternate;
-  -ms-animation: color_change 120s infinite alternate;
-  -o-animation: color_change 120s infinite alternate;
-  animation: color_change 120s infinite alternate;
+	-webkit-animation: color_change 216000s infinite alternate;
+  -moz-animation: color_change 216000s infinite alternate;
+  -ms-animation: color_change 216000s infinite alternate;
+  -o-animation: color_change 216000s infinite alternate;
+  animation: color_change 216000s infinite alternate;
 }
 
 @-webkit-keyframes color_change {
