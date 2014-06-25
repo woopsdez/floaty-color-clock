@@ -16,7 +16,7 @@ function getTime () {
 
 	// もし分が一桁だったら二桁にする
 	if (Math.floor(minutes / 10) === 0) {
-  minutes = "0" + minutes;
+		minutes = "0" + minutes;
 	}
 
 	// 日付と曜日をまとめる
@@ -41,19 +41,29 @@ function refleshTime (){
 
 // 天気情報を取得
 
-$.ajax({
-  type: 'GET',
-  url: 'http://www.drk7.jp/weather/json/13.js',
-  dataType: 'jsonp',
-  jsonpCallback: 'dark7',
-  success: function(json){
-  	
-  }
+var prefNum = 0;
 
-// drk7jpweather = { // objectを定義
-	"callback" : function (json) { // 無名関数でcallbackを定義
-	
-		// --- データ取得 ---
+// selectのデータ取得
+$("select").change(
+	function(){
+		prefNum = $('select option:selected').val();
+		$("#dark7").attr({
+			src: 'http://www.drk7.jp/weather/json/'+ prefNum +'.js'
+		});
+	}
+);
+
+if (prefNum == 0) {
+	prefNum = 13
+}
+
+$.ajax({
+	type: 'GET',
+	url: 'http://www.drk7.jp/weather/json/'+ prefNum +'.js',
+	dataType: 'jsonp',
+	jsonpCallback: 'dark7',
+	success: function(json){
+  	// --- データ取得 ---
 		// 地域データを取得
 		var area = json.pref.area
 
@@ -74,15 +84,15 @@ $.ajax({
 			// --- 天気の処理 ---
 			// 降水確立の数字をアイコンにマッピング
 			if ( data.content == 0 ) {
-					iconImg = "sunny.svg";
+				iconImg = "sunny.svg";
 			}else
-				if (data.content >= 10 ) {
-					iconImg = "cloudy.svg"
+			if (data.content >= 10 ) {
+				iconImg = "cloudy.svg"
 			}else
-				if (data.content >= 50){
-					iconImg = "rainy.svg"
+			if (data.content >= 50){
+				iconImg = "rainy.svg"
 			}else{
-					iconImg = "none.png"
+				iconImg = "none.png"
 			};
 
 			$(icon[i]).attr("src","assets/img/"+iconImg)
@@ -110,7 +120,7 @@ $('.fade-in-7').addClass('fadeInUp');
 
 // .weather ul liにアニメーション管理用のclassを付与
 $(function(){
-  $('.weather ul li').each(function(i){ 
+	$('.weather ul li').each(function(i){ 
     $(this).attr('class','fade-in-' + (i+1)); //fade-inの連番Classを振る
     $(this).addClass('animated bounceIn'); // animation用のclass付与
   });
@@ -147,6 +157,6 @@ $('.off').hover(
 			opacity: '0'
 		});
 	}
-);
+	);
 
 $('.detail').click(openSlide);
