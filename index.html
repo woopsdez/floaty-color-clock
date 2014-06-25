@@ -11,58 +11,143 @@
 	<link rel="stylesheet" href="assets/css/animate.css">
 </head>
 <body>
-	<section class="clock">
-		<time class="hm fade-in-6"><span id="numH">00</span><span id="blink">:</span><span id="numM">00</span></time>
-		<time class="dw fade-in-7" id="dw">hogehoge</time>
-	</section>
-	<section class="schedule fade-in-6">
-		<ol>
-			<li>
-				<time>16:00</time> 定休日
-			</li>
-			<li>
-				<time>18:00</time> 定休日
-			</li>
-			<li>
-				<time>21:00</time> 定休日
-			</li>
-			<li>
-				<time>23:00</time> 定休日
-			</li>
-		</ol>
-	</section>
-	<section class="weather">
+	<div class="bg">
+		<img src="assets/img/rotateGround.png">
+	</div>
+	<div class="setting">
+		<form action="">
+			<select id="pref" name="pref">
+				<option value="">都道府県をお選びください。</option>
+				<optgroup label="北海道・東北">
+					<option value="01">北海道</option>
+					<option value="02">青森県</option>
+					<option value="03">岩手県</option>
+					<option value="04">宮城県</option>
+					<option value="05">秋田県</option>
+					<option value="06">山形県</option>
+					<option value="07">福島県</option>
+				</optgroup>
+				<optgroup label="関東">
+					<option value="08">茨城県</option>
+					<option value="09">栃木県</option>
+					<option value="10">群馬県</option>
+					<option value="11">埼玉県</option>
+					<option value="12">千葉県</option>
+					<option value="13">東京都</option>
+					<option value="14">神奈川県</option>
+				</optgroup>
+				<optgroup label="甲信越・北陸">
+					<option value="15">新潟県</option>
+					<option value="16">富山県</option>
+					<option value="17">石川県</option>
+					<option value="18">福井県</option>
+					<option value="19">山梨県</option>
+					<option value="20">長野県</option>
+				</optgroup>
+				<optgroup label="東海">
+					<option value="21">岐阜県</option>
+					<option value="22">静岡県</option>
+					<option value="23">愛知県</option>
+					<option value="24">三重県</option>
+				</optgroup>
+				<optgroup label="関西">
+					<option value="25">滋賀県</option>
+					<option value="26">京都府</option>
+					<option value="27">大阪府</option>
+					<option value="28">兵庫県</option>
+					<option value="29">奈良県</option>
+					<option value="30">和歌山県</option>
+				</optgroup>
+				<optgroup label="中国">
+					<option value="31">鳥取県</option>
+					<option value="32">島根県</option>
+					<option value="33">岡山県</option>
+					<option value="34">広島県</option>
+					<option value="35">山口県</option>
+				</optgroup>
+				<optgroup label="四国">
+					<option value="36">徳島県</option>
+					<option value="37">香川県</option>
+					<option value="38">愛媛県</option>
+					<option value="39">高知県</option>
+				</optgroup>
+				<optgroup label="九州・沖縄">
+					<option value="40">福岡県</option>
+					<option value="41">佐賀県</option>
+					<option value="42">長崎県</option>
+					<option value="43">熊本県</option>
+					<option value="44">大分県</option>
+					<option value="45">宮崎県</option>
+					<option value="46">鹿児島県</option>
+					<option value="47">沖縄県</option>
+				</optgroup>
+			</select>
+			<select id="area" name="ara">
+				<option value=""></option>
+			</select>
+		</form>
 		<ul>
-			<li>
-				<time>00<small>h</small></time>
-				<div class="icon">
-					<img src="" alt="sunny">
-				</div>
-				<span class="rainfall">can't loading</span>
-			</li>
-			<li>
-				<time>06<small>h</small></time>
-				<div class="icon">
-					<img src="" alt="sunny">
-				</div>
-				<span class="rainfall">can't loading</span>
-			</li>
-			<li>
-				<time>12<small>h</small></time>
-				<div class="icon">
-					<img src="" alt="rainy">
-				</div>
-				<span class="rainfall">can't loading</span>
-			</li>
-			<li>
-				<time>18</time>
-				<div class="icon">
-					<img src="" alt="cloudy">
-				</div>
-				<span class="rainfall">can't loading</span>
-			</li>
+			<li><a href="#" id="sample01">sample01</a></li>
+			<li><a href="#" id="sample02">sample02</a></li>
+			<li><a href="#" id="sample03">sample03</a></li>
+			<li><a href="#" id="sample04">sample04</a></li>
+			<li><a href="#" id="sample05">sample05</a></li>
 		</ul>
-	</section>
+	</div>
+	<div class="detail">
+		<section class="clock">
+			<time class="hm fade-in-6"><span id="numH">00</span><span id="blink">:</span><span id="numM">00</span></time>
+			<time class="dw fade-in-7" id="dw">hogehoge</time>
+		</section>
+		<section class="schedule fade-in-6">
+			<ol>
+				<li>
+					<time>16:00</time> 定休日
+				</li>
+				<li>
+					<time>18:00</time> 定休日
+				</li>
+				<li>
+					<time>21:00</time> 定休日
+				</li>
+				<li>
+					<time>23:00</time> 定休日
+				</li>
+			</ol>
+		</section>
+		<section class="weather">
+			<ul>
+				<li>
+					<time>00<small>h</small></time>
+					<div class="icon">
+						<img src="">
+					</div>
+					<span class="rainfall">can't loading</span>
+				</li>
+				<li>
+					<time>06<small>h</small></time>
+					<div class="icon">
+						<img src="">
+					</div>
+					<span class="rainfall">can't loading</span>
+				</li>
+				<li>
+					<time>12<small>h</small></time>
+					<div class="icon">
+						<img src="">
+					</div>
+					<span class="rainfall">can't loading</span>
+				</li>
+				<li>
+					<time>18<small>h</small></time>
+					<div class="icon">
+						<img src="">
+					</div>
+					<span class="rainfall">can't loading</span>
+				</li>
+			</ul>
+		</section>
+	</div>
 	
 	<!-- special thanks
 	<a href="http://www.sketchappsources.com/free-source/423-weather-icons.html">Weather Icons Sketch freebie - Download free resource for Sketch 3- Sketch App Sources</a>
@@ -71,7 +156,7 @@
 	<script src="http://code.jquery.com/jquery.js"></script>
 	<script src="assets/js/bootstrap.min.js"></script>
 	<script src="assets/js/wall.js"></script>
-	<script src="http://www.drk7.jp/weather/json/13.js">
+	<script id="dark7" src="http://www.drk7.jp/weather/json/13.js">
 	</script>
 </body>
 </html>

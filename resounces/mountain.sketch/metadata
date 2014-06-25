@@ -12,12 +12,9 @@
 	<array>
 		<string>Helvetica-Light</string>
 		<string>Roboto-Bold</string>
-		<string>LucidaGrande-Bold</string>
-		<string>HiraKakuProN-W3</string>
-		<string>Roboto-Regular</string>
 	</array>
 	<key>length</key>
-	<integer>157238</integer>
+	<integer>1526956</integer>
 	<key>version</key>
 	<integer>37</integer>
 </dict>

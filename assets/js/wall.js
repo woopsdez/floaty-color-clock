@@ -31,11 +31,6 @@ function getTime () {
 	};
 }
 
-// HTMLを書き換える
-function overWrite (element, replaceText){
-  $(element).text(replaceText)
-};
-
 // 取得した時間をHTMLに書き込む
 function refleshTime (){
 	var t = getTime();
@@ -45,10 +40,23 @@ function refleshTime (){
 }
 
 // 天気情報を取得
-drk7jpweather = { // objectを定義
+
+$.ajax({
+  type: 'GET',
+  url: 'http://www.drk7.jp/weather/json/13.js',
+  dataType: 'jsonp',
+  jsonpCallback: 'dark7',
+  success: function(json){
+  	
+  }
+
+// drk7jpweather = { // objectを定義
 	"callback" : function (json) { // 無名関数でcallbackを定義
-		
+	
 		// --- データ取得 ---
+		// 地域データを取得
+		var area = json.pref.area
+
 		// 降水確立を取得
 		var period = json.pref.area["東京地方"].info[0].rainfallchance.period; //長いので一時格納				
 
@@ -78,17 +86,25 @@ drk7jpweather = { // objectを定義
 			};
 
 			$(icon[i]).attr("src","assets/img/"+iconImg)
-			$(rainNum[i]).text(data.content+"%")			
+			$(rainNum[i]).text(data.content+"%")
 		};
+		// -- styling --
+		setTimeout(function(){
+			var maxVal = 0;
+			$('.icon img').each(function(index,ele){
+				maxVal = Math.max(maxVal, $(this).height())
+			});
+			$('.icon').height(maxVal)
+		},1000);
 	}
-}
+});
 
 refleshTime();
 setInterval(refleshTime,1000);
 
-// animation
+// -- animation --
 
-$('#blink').addClass('flash')
+$('#blink').addClass('flash');
 $('.fade-in-6').addClass('fadeInUp');
 $('.fade-in-7').addClass('fadeInUp');
 
@@ -99,3 +115,38 @@ $(function(){
     $(this).addClass('animated bounceIn'); // animation用のclass付与
   });
 });
+
+// -- slide menu --
+
+function openSlide(){
+	$(this).removeClass('off');
+	$(this).addClass('on');
+	$('.setting').animate({left: '0'});
+	$('.detail').animate({left: '350px'});
+	$('.on').off('click');
+	$('.on').click(closeSlide);
+};
+
+function closeSlide(){
+	$(this).removeClass('on');
+	$(this).addClass('off');
+	$('.setting').animate({left: '-350px'});
+	$('.detail').animate({left: '0'});
+	$('.off').off('click');
+	$('.off').click(openSlide);
+};
+
+$('.off').hover(
+	function(){
+		$(this).animate({
+			opacity: '1'
+		});
+	},
+	function(){
+		$(this).animate({
+			opacity: '0'
+		});
+	}
+);
+
+$('.detail').click(openSlide);
