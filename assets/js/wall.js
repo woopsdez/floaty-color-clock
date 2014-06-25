@@ -41,34 +41,29 @@ function refleshTime (){
 
 // 天気情報を取得
 
-var prefNum = 0;
 
 // selectのデータ取得
 $("select").change(
 	function(){
 		prefNum = $('select option:selected').val();
-		$("#dark7").attr({
-			src: 'http://www.drk7.jp/weather/json/'+ prefNum +'.js'
-		});
+		$("body").append("<script src=\"http://www.drk7.jp/weather/json/" + prefNum + ".js\"></script>");
+		$('#area').remove();
+		$('form').append('<select id="area" name="ara"></select>');
 	}
 );
 
-if (prefNum == 0) {
-	prefNum = 13
-}
-
-$.ajax({
-	type: 'GET',
-	url: 'http://www.drk7.jp/weather/json/'+ prefNum +'.js',
-	dataType: 'jsonp',
-	jsonpCallback: 'dark7',
-	success: function(json){
-  	// --- データ取得 ---
+drk7jpweather = { // objectを定義
+	"callback" : function(json){ // 無名関数でcallbackを定義
+		var prefNum = 0;
+	  	// --- データ取得 ---
 		// 地域データを取得
-		var area = json.pref.area
+		var area = json.pref.area;
+		for (var key in area){ // areaのプロパティ名をkeyに入れる
+			$("#area").append('<option value="'+ key +'">'+ key +'</option>');
+		}
 
 		// 降水確立を取得
-		var period = json.pref.area["東京地方"].info[0].rainfallchance.period; //長いので一時格納				
+		var period = json.pref.area[key].info[0].rainfallchance.period; //長いので一時格納				
 
 		// 処理用の変数や配列に格納
 		var data, num, iconImg, max, min, average;
@@ -107,7 +102,7 @@ $.ajax({
 			$('.icon').height(maxVal)
 		},1000);
 	}
-});
+}
 
 refleshTime();
 setInterval(refleshTime,1000);

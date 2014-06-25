@@ -17,7 +17,6 @@
 	<div class="setting">
 		<form action="">
 			<select id="pref" name="pref">
-				<option value="">都道府県をお選びください。</option>
 				<optgroup label="北海道・東北">
 					<option value="01">北海道</option>
 					<option value="02">青森県</option>
@@ -33,7 +32,7 @@
 					<option value="10">群馬県</option>
 					<option value="11">埼玉県</option>
 					<option value="12">千葉県</option>
-					<option value="13">東京都</option>
+					<option value="13" selected>東京都</option>
 					<option value="14">神奈川県</option>
 				</optgroup>
 				<optgroup label="甲信越・北陸">
@@ -82,17 +81,7 @@
 					<option value="47">沖縄県</option>
 				</optgroup>
 			</select>
-			<select id="area" name="ara">
-				<option value=""></option>
-			</select>
 		</form>
-		<ul>
-			<li><a href="#" id="sample01">sample01</a></li>
-			<li><a href="#" id="sample02">sample02</a></li>
-			<li><a href="#" id="sample03">sample03</a></li>
-			<li><a href="#" id="sample04">sample04</a></li>
-			<li><a href="#" id="sample05">sample05</a></li>
-		</ul>
 	</div>
 	<div class="detail">
 		<section class="clock">
@@ -156,7 +145,6 @@
 	<script src="http://code.jquery.com/jquery.js"></script>
 	<script src="assets/js/bootstrap.min.js"></script>
 	<script src="assets/js/wall.js"></script>
-	<script id="dark7" src="http://www.drk7.jp/weather/json/13.js">
-	</script>
+	<script src="http://www.drk7.jp/weather/json/13.js"></script>
 </body>
 </html>
