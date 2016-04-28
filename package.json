@@ -1,0 +1,30 @@
+{
+  "name": "woopsdez_start_wall",
+  "version": "1.0.0",
+  "description": "To develop a simple clock app for practice of javascript & css3 animation.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/woopsdez/woopsdez_start_wall.git"
+  },
+  "keywords": [
+    "javascript",
+    "css3",
+    "animation",
+    "clock"
+  ],
+  "author": "Miki Ishijima",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/woopsdez/woopsdez_start_wall/issues"
+  },
+  "homepage": "https://github.com/woopsdez/woopsdez_start_wall#readme",
+  "devDependencies": {
+    "browser-sync": "^2.12.5",
+    "gulp": "^3.9.1",
+    "gulp-less": "^3.0.5"
+  }
+}
