@@ -74,35 +74,35 @@ drk7jpweather = { // objectを定義
 		// 長ったらしいパスを格納
 		// -- TODO 処理部分HTMLにclassを入れて短縮する --
 		var time = $(".weather ul li time")
-		var icon = $(".icon img")
+		var icon = $("i.wi")
 		var rainNum = $(".rainfall")
 
 		for (var i = 0; i < period.length; i++) { // periodに格納している数だけ繰り返す
 			data = period[i]; // periodをdataに入れる
 			// --- 天気の処理 ---
 			// 降水確立の数字をアイコンにマッピング
-			if ( data.content == 0 ) {
-				iconImg = "sunny.svg";
+			if ( data.content <= 30 ) {
+				iconClass = "wi-day-sunny";
 			}else
-			if (data.content >= 10 ) {
-				iconImg = "cloudy.svg"
+			if (data.content > 31 && data.content <= 60 ) {
+				iconClass = "wi-cloudy"
 			}else
-			if (data.content >= 50){
-				iconImg = "rainy.svg"
+			if (data.content >= 61){
+				iconClass = "wi-rain"
 			}else{
-				iconImg = "none.png"
+				iconClass = "wi-alien"
 			};
 
-			$(icon[i]).attr("src","assets/img/"+iconImg)
+			$(icon[i]).attr("class", "wi "+iconClass)
 			$(rainNum[i]).text(data.content+"%")
 		};
 		// -- styling --
 		setTimeout(function(){
 			var maxVal = 0;
-			$('.icon img').each(function(index,ele){
+			$('i.wi').each(function(index,ele){
 				maxVal = Math.max(maxVal, $(this).height())
 			});
-			$('.icon').height(maxVal)
+			$('i.wi').height(maxVal)
 		},1000);
 	}
 }
