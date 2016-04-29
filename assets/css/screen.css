@@ -111,7 +111,7 @@ body {
   margin: 10px 0;
 }
 .setting select {
-  width: 300px;
+  width: 90%;
 }
 .setting footer {
   position: absolute;
@@ -228,6 +228,11 @@ body {
 .weather ul li:before {
   display: block;
   content: "・";
+}
+.btn-fullscreen {
+  position: absolute;
+  right: 10px;
+  color: rgba(0, 0, 0, 0.5);
 }
 body {
   -webkit-animation: color-change 10s infinite alternate;

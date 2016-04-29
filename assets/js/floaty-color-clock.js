@@ -80,7 +80,7 @@ drk7jpweather = { // objectを定義
 		// 長ったらしいパスを格納
 		// -- TODO 処理部分HTMLにclassを入れて短縮する --
 		var time = $(".weather ul li time")
-		var icon = $("i.wi")
+		var icon = $(".weather i")
 		var rainNum = $(".rainfall")
 
 		for (var i = 0; i < period.length; i++) { // periodに格納している数だけ繰り返す
@@ -88,15 +88,15 @@ drk7jpweather = { // objectを定義
 			// --- 天気の処理 ---
 			// 降水確立の数字をアイコンにマッピング
 			if ( data.content <= 30 ) {
-				iconClass = "wi-day-sunny";
+				iconClass = "wi wi-day-sunny";
 			}else
 			if (data.content > 31 && data.content <= 60 ) {
-				iconClass = "wi-cloudy"
+				iconClass = "wi wi-cloudy"
 			}else
 			if (data.content >= 61){
-				iconClass = "wi-rain"
+				iconClass = "wi wi-rain"
 			}else{
-				iconClass = "wi-alien"
+				iconClass = "fa fa-question"
 			};
 
 			$(icon[i]).attr("class", "wi "+iconClass)
@@ -226,3 +226,49 @@ $('.style #selectFont').change(function(){
 	localStorage.setItem('fontName', fontName);
 	$('body').css("font-family", localStorage.fontName);
 });
+
+// ====================
+// Fullscreen
+// ====================
+
+var target = document.getElementById("target");
+var btn    = document.getElementById("fullscreenSwitch");
+
+/*フルスクリーン実行用ファンクション*/
+function requestFullscreen() {
+	if (target.webkitRequestFullscreen) {
+		target.webkitRequestFullscreen(); //Chrome15+, Safari5.1+, Opera15+
+	} else if (target.mozRequestFullScreen) {
+		target.mozRequestFullScreen(); //FF10+
+	} else if (target.msRequestFullscreen) {
+		target.msRequestFullscreen(); //IE11+
+	} else if (target.requestFullscreen) {
+		target.requestFullscreen(); // HTML5 Fullscreen API仕様
+	} else {
+		alert('ご利用のブラウザはフルスクリーン操作に対応していません');
+		return;
+	}
+	/*フルスクリーン終了用ファンクションボタンに切り替える*/
+	btn.onclick = exitFullscreen;
+}
+
+/*フルスクリーン終了用ファンクション*/
+function exitFullscreen() {
+	if (document.webkitCancelFullScreen) {
+		document.webkitCancelFullScreen(); //Chrome15+, Safari5.1+, Opera15+
+	} else if (document.mozCancelFullScreen) {
+		document.mozCancelFullScreen(); //FF10+
+	} else if (document.msExitFullscreen) {
+		document.msExitFullscreen(); //IE11+
+	} else if(document.cancelFullScreen) {
+		document.cancelFullScreen(); //Gecko:FullScreenAPI仕様
+	} else if(document.exitFullscreen) {
+		document.exitFullscreen(); // HTML5 Fullscreen API仕様
+	}
+	/*フルスクリーン実行用ファンクションボタンに切り替える*/
+	btn.onclick = requestFullscreen;
+}
+/*サポートしていないIE10以下とスマフォではフルスクリーンボタンを非表示*/
+if(typeof window.orientation != "undefined" || (document.uniqueID && document.documentMode < 11)){
+	btn.style.display = "none";
+}

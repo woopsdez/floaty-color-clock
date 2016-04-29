@@ -18,6 +18,7 @@
 	<!-- ogp -->
 	<title>Start Page</title>
 	<link href="assets/css/screen.css" rel="stylesheet" media="screen">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 	<link href="assets/css/weather-icons.css" rel="stylesheet" media="screen">
 </head>
 <body>
@@ -131,7 +132,7 @@
 		</footer>
 	</section>
 
-	<div class="detail">
+	<div class="detail" id="target">
 		<section class="clock">
 			<time class="hm fade-in-6"><span id="numH">00</span><span id="blink">:</span><span id="numM">00</span></time>
 			<div class="hanging">
@@ -165,6 +166,13 @@
 			</ul>
 		</section>
 	</div>
+
+<a href="" class="btn-fullscreen" id="fullscreenSwitch" onclick="requestFullscreen()">
+	<span class="fa-stack fa-lg">
+	  <i class="fa fa-square fa-stack-2x"></i>
+	  <i class="fa fa-expand fa-stack-1x fa-inverse"></i>
+	</span>
+</a>
 	
 	<script src="http://code.jquery.com/jquery.js"></script>
 	<script src="assets/js/jp-prefecture.min.js"></script>
