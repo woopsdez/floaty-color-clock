@@ -1,5 +1,5 @@
 body {
-  animation: color-change 10s infinite alternate;
+  animation: "color-change" 10s infinite alternate;
 }
 @keyframes color-change {
   0% {

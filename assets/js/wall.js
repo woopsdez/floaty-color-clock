@@ -127,7 +127,7 @@ function openSlide(){
 	$(this).removeClass('off');
 	$(this).addClass('on');
 	$('.setting').animate({left: '0'});
-	$('.detail').animate({left: '350px'});
+	$('.detail').animate({left: '370px'});
 	$('.on').off('click');
 	$('.on').click(closeSlide);
 };
@@ -135,7 +135,7 @@ function openSlide(){
 function closeSlide(){
 	$(this).removeClass('on');
 	$(this).addClass('off');
-	$('.setting').animate({left: '-350px'});
+	$('.setting').animate({left: '-370px'});
 	$('.detail').animate({left: '0'});
 	$('.off').off('click');
 	$('.off').click(openSlide);
