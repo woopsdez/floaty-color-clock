@@ -6,7 +6,7 @@ var autoprefixer   = require('gulp-autoprefixer');
 gulp.task('serve', ['less'],function() {
 	browserSync.init({server: "./"});
 	gulp.watch('less/*.less', ['less']);
-	gulp.watch('*.html','assets/js/*.js').on('change',browserSync.reload);
+	gulp.watch(['*.html','assets/js/*.js']).on('change',browserSync.reload);
 });
 
 gulp.task('less', function() {

@@ -34,16 +34,9 @@ function getTime () {
 	};
 }
 
-// 取得した時間をHTMLに書き込む
-function refleshTime (){
-	var t = getTime();
-	$("#numH").text(t.hours);
-	$("#numM").text(t.minutes);
-	$("#dw").text(t.mdw);
-}
-
+// =====================
 // 天気情報を取得
-
+// =====================
 
 // selectのデータ取得
 $("#pref").change(
@@ -55,18 +48,22 @@ $("#pref").change(
 	}
 );
 
+var prefName, areaName;
+
 drk7jpweather = { // objectを定義
 	"callback" : function(json){ // 無名関数でcallbackを定義
 		var prefNum = 0;
-	  	// --- データ取得 ---
+	  // --- データ取得 ---
 		// 地域データを取得
+		prefName = json.pref['id'];
 		var area = json.pref.area;
 		for (var key in area){ // areaのプロパティ名をkeyに入れる
+			areaName = key
 			$("#area").append('<option value="'+ key +'">'+ key +'</option>');
 		}
 
 		// 降水確立を取得
-		var period = json.pref.area[key].info[0].rainfallchance.period; //長いので一時格納				
+		var period = json.pref.area[key].info[0].rainfallchance.period; //長いので一時格納			
 
 		// 処理用の変数や配列に格納
 		var data, num, iconImg, max, min, average;
@@ -96,6 +93,7 @@ drk7jpweather = { // objectを定義
 			$(icon[i]).attr("class", "wi "+iconClass)
 			$(rainNum[i]).text(data.content+"%")
 		};
+
 		// -- styling --
 		setTimeout(function(){
 			var maxVal = 0;
@@ -104,7 +102,20 @@ drk7jpweather = { // objectを定義
 			});
 			$('i.wi').height(maxVal)
 		},1000);
+
+		// 県名を英語に変換
+		var jp = jpPrefecture;
+		var prefNameEn = jp.prefConvert(prefName, "en");
+		$("#areaName small").text(prefNameEn);
 	}
+}
+
+// 取得した時間をHTMLに書き込む
+function refleshTime (){
+	var t = getTime();
+	$("#numH").text(t.hours);
+	$("#numM").text(t.minutes);
+	$("#dw").text(t.mdw);
 }
 
 refleshTime();

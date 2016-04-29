@@ -129,13 +129,15 @@
 		<footer>
 			&copy; <a href="http://mikiishijima.com">Miki Ishijima</a> 2016
 		</footer>
-
 	</section>
 
 	<div class="detail">
 		<section class="clock">
 			<time class="hm fade-in-6"><span id="numH">00</span><span id="blink">:</span><span id="numM">00</span></time>
-			<time class="dw fade-in-7" id="dw">hogehoge</time>
+			<div class="hanging">
+				<time class="dw fade-in-7" id="dw">hogehoge</time>
+				<span class="ar fade-in-8" id="areaName"><small>fugafuga</small></span>
+			</div>
 		</section>
 		
 		<section class="weather">
@@ -165,6 +167,7 @@
 	</div>
 	
 	<script src="http://code.jquery.com/jquery.js"></script>
+	<script src="assets/js/jp-prefecture.min.js"></script>
 	<script src="assets/js/wall.js"></script>
 	<script src="http://www.drk7.jp/weather/json/13.js"></script>
 </body>

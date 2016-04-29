@@ -131,22 +131,21 @@ body{
 }
 
 .clock{
+	position: relative;
 	width: 100%;
 	float: left;
 	padding: 5%;
-	font-size: 150px;
+	font-size: 70px;
 	line-height: 1;
-	@media screen and (min-width: 768px) {
-		font-size: 300px;
-	}
 	.hm{
-		width: 100%;
-		display: inline-block;
+		font-size: 150px;
+		@media screen and (min-width: 768px) {
+			font-size: 300px;
+		}
 	}
-	.dw{
-		display :block;
+	.ar small{
 		font-size: 50px;
-		margin-left: .8em;
+		opacity: .9;
 	}
 }
 
