@@ -1,3 +1,6 @@
+// =====================
+// -- 時間表示 --
+// =====================
 // ----- 関数群 -----
 
 // 時間取得
@@ -43,12 +46,12 @@ function refleshTime (){
 
 
 // selectのデータ取得
-$("select").change(
+$("#pref").change(
 	function(){
 		prefNum = $('select option:selected').val();
 		$("body").append("<script src=\"http://www.drk7.jp/weather/json/" + prefNum + ".js\"></script>");
 		$('#area').remove();
-		$('form').append('<select id="area" name="ara"></select>');
+		$('#setArea').append('<select id="area" name="ara"></select>');
 	}
 );
 
@@ -107,8 +110,9 @@ drk7jpweather = { // objectを定義
 refleshTime();
 setInterval(refleshTime,1000);
 
+// =====================
 // -- animation --
-
+// =====================
 $('#blink').addClass('flash');
 $('.fade-in-6').addClass('fadeInUp');
 $('.fade-in-7').addClass('fadeInUp');
@@ -121,13 +125,14 @@ $(function(){
   });
 });
 
+// =====================
 // -- slide menu --
-
+// =====================
 function openSlide(){
 	$(this).removeClass('off');
 	$(this).addClass('on');
 	$('.setting').animate({left: '0'});
-	$('.detail').animate({left: '370px'});
+	$('.detail').animate({left: '350px'});
 	$('.on').off('click');
 	$('.on').click(closeSlide);
 };
@@ -135,7 +140,7 @@ function openSlide(){
 function closeSlide(){
 	$(this).removeClass('on');
 	$(this).addClass('off');
-	$('.setting').animate({left: '-370px'});
+	$('.setting').animate({left: '-350px'});
 	$('.detail').animate({left: '0'});
 	$('.off').off('click');
 	$('.off').click(openSlide);
@@ -155,3 +160,21 @@ $('.off').hover(
 	);
 
 $('.detail').click(openSlide);
+
+// =====================
+// -- css set propaty --
+// =====================
+
+// text color
+$('#textWhite').on('click', function(){
+	$('.detail').css("color","#FFF");
+})
+$('#textBlack').on('click', function(){
+	$('.detail').css("color","#000");
+})
+
+// font
+$('.style #selectFont').change(function(){
+	var fontName = $(this).val();
+	$('body').css("font-family",fontName);
+});

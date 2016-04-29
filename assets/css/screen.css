@@ -1,4 +1,61 @@
-@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,500,700);
+@import url(https://fonts.googleapis.com/css?family=Montserrat|Lato|Open+Sans|Playfair+Display|Alegreya);
+select,
+input {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 0;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  background: none transparent;
+  vertical-align: middle;
+  font-size: inherit;
+  color: inherit;
+  box-sizing: content-box;
+  border: none;
+}
+form {
+  padding: 0px;
+}
+select,
+input {
+  width: 90%;
+  margin: 0 auto;
+  font-size: 20px;
+  font-family: "HelveticaNeue-UltraLight", sans-serif;
+  margin-bottom: 3px;
+  padding: 10px;
+  background: #222;
+  border-radius: 3px;
+}
+.Montserrat {
+  font-family: Montserrat;
+}
+.Lato {
+  font-family: Lato;
+}
+.OpenSans {
+  font-family: "Open Sans";
+}
+.PlayfairDisplay {
+  font-family: "Playfair Display";
+}
+.Alegreya {
+  font-family: Alegreya;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+}
+ul,
+ol {
+  list-style-type: none;
+}
 html,
 body {
   height: 100%;
@@ -6,11 +63,7 @@ body {
 body {
   overflow: hidden;
   color: #FFF;
-  font-family: "HelveticaNeue-UltraLight";
-}
-ul,
-ol {
-  list-style-type: none;
+  font-family: "HelveticaNeue-UltraLight", sans-serif;
 }
 .bg {
   width: 100%;
@@ -37,13 +90,38 @@ ol {
 .setting {
   position: absolute;
   top: 0;
-  left: -370px;
+  left: -350px;
   width: 350px;
   height: 100%;
   float: left;
-  padding: 10px;
   opacity: 0.8;
   background: #000;
+}
+.setting a {
+  color: #FFF;
+}
+.setting h2 {
+  margin-bottom: 10px;
+}
+.setting form {
+  margin-bottom: 3px;
+}
+.setting footer {
+  position: absolute;
+  width: inherit;
+  bottom: 4em;
+  padding-top: 20px;
+  text-align: center;
+}
+.setting .column-2 input[type=button] {
+  width: 41.5%;
+  display: inline-table;
+}
+.setting .set-startpage {
+  margin-top: 60px;
+}
+.setting .set-startpage input[type=submit] {
+  background: #1559EB;
 }
 .detail {
   position: absolute;
@@ -57,9 +135,7 @@ ol {
   width: 100%;
   float: left;
   padding: 5%;
-  font-family: "HelveticaNeue-UltraLight";
   font-size: 150px;
-  color: #FFFFFF;
   line-height: 1;
 }
 @media screen and (min-width: 768px) {
@@ -73,9 +149,8 @@ ol {
 }
 .clock .dw {
   display: block;
-  font-family: "Roboto-Light";
   font-size: 50px;
-  margin-left: 14px;
+  margin-left: .8em;
 }
 .weather {
   clear: both;
@@ -84,9 +159,7 @@ ol {
 .weather ul {
   padding: 0;
   padding-top: 20px;
-  font-family: Roboto-Bold;
   font-size: 30px;
-  color: #FFFFFF;
   line-height: 39px;
   border-top: 1px solid;
 }
@@ -120,9 +193,7 @@ ol {
   }
 }
 .weather ul li .rainfall {
-  font-family: Roboto-Bold;
   font-size: 20px;
-  color: #FFFFFF;
   line-height: 26px;
 }
 .weather ul li:before {

@@ -17,16 +17,16 @@
 	<meta name="twitter:creator" content="@woopsdez">
 	<!-- ogp -->
 	<title>Start Page</title>
-	<!-- <link href="assets/css/bootstrap.css" rel="stylesheet" media="screen"> -->
-	<!-- 	<link href="assets/css/lib-animate.css" rel="stylesheet" media="screen"> -->
 	<link href="assets/css/screen.css" rel="stylesheet" media="screen">
 </head>
 <body>
 	<div class="bg">
 		<img src="assets/img/rotateGround-white.png">
 	</div>
-	<div class="setting">
-		<form action="">
+	<section class="setting">
+		<section class="area">
+			<h2>Area Setting</h2>
+			<form id="setArea" action="">
 			<select id="pref" name="pref">
 				<optgroup label="北海道・東北">
 					<option value="01">北海道</option>
@@ -93,7 +93,37 @@
 				</optgroup>
 			</select>
 		</form>
-	</div>
+		</section>
+		
+		<section class="style">
+			<h2>Style Setting</h2>
+			<form class="column-2" id="textColor" action="">
+				<input type="button" id="textWhite" value="white">
+				<input type="button" id="textBlack" value="black">
+			</form>
+
+			<select name="" id="selectFont">
+				<option value="HelveticaNeue-UltraLight">Helvetica Ultra Light</option>
+				<option value="Montserrat">Montserrat</option>
+				<option value="Lato">Lato</option>
+				<option value="Open Sans">Open Sans</option>
+				<option value="Playfair Display">Playfair Display</option>
+				<option value="Alegreya">Alegreya</option>
+			</select>
+		</section>
+
+		<section class="set-startpage">
+			<form action="">
+				<input type="submit" value="Set in your browser">
+			</form>
+		</section>
+
+		<footer>
+			&copy; <a href="http://mikiishijima.com">Miki Ishijima</a> 2016
+		</footer>
+
+	</section>
+
 	<div class="detail">
 		<section class="clock">
 			<time class="hm fade-in-6"><span id="numH">00</span><span id="blink">:</span><span id="numM">00</span></time>

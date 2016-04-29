@@ -1,20 +1,21 @@
-//===============
+// font set
+@import url(https://fonts.googleapis.com/css?family=Montserrat|Lato|Open+Sans|Playfair+Display|Alegreya);
+
+.Montserrat{font-family: Montserrat}
+.Lato{font-family: Lato}
+.OpenSans{font-family: "Open Sans"}
+.PlayfairDisplay{font-family: "Playfair Display"}
+.Alegreya{font-family: Alegreya}
+
 // variables
-//===============
-@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,500,700);
+@base-fontfamily: "HelveticaNeue-UltraLight", sans-serif;
 
 //===============
 // basic styles
 //===============
 
-html,body{
-	height: 100%;
-}
-
-body{
-	overflow: hidden;
-	color: #FFF;
-	font-family: "HelveticaNeue-UltraLight";
+h1,h2,h3,h4,h5,h6{
+	font-weight: normal;
 }
 
 ul,ol{
@@ -24,6 +25,16 @@ ul,ol{
 // ------------------
 // layout
 // ------------------
+
+html,body{
+	height: 100%;
+}
+
+body{
+	overflow: hidden;
+	color: #FFF;
+	font-family: @base-fontfamily;
+}
 
 .bg{
 	width: 100%;
@@ -47,13 +58,38 @@ ul,ol{
 .setting{
 	position: absolute;
 	top: 0;
-	left: -370px;
+	left: -350px;
 	width: 350px;
 	height: 100%;
 	float: left;
-	padding: 10px;
 	opacity: 0.8;
 	background: #000;
+	a{color: #FFF;}
+	h2{margin-bottom: 10px;}
+	form{margin-bottom: 3px;}
+	footer{
+		position: absolute;
+		width: inherit;
+		bottom: 4em;
+		padding-top: 20px;
+		text-align: center;
+	}
+
+	.column-2{
+		input[type=button]{
+			width: 41.5%;
+			display: inline-table;
+		}
+	}
+
+
+
+	.set-startpage{
+		margin-top: 60px;
+		input[type=submit]{
+			background: #1559EB;
+		}
+	}
 }
 
 .detail{
@@ -69,9 +105,7 @@ ul,ol{
 	width: 100%;
 	float: left;
 	padding: 5%;
-	font-family:"HelveticaNeue-UltraLight";
 	font-size: 150px;
-	color: #FFFFFF;
 	line-height: 1;
 	@media screen and (min-width: 768px) {
 		font-size: 300px;
@@ -82,24 +116,10 @@ ul,ol{
 	}
 	.dw{
 		display :block;
-		font-family: "Roboto-Light";
 		font-size: 50px;
-		margin-left: 14px;
+		margin-left: .8em;
 	}
 }
-
-// .schedule{
-// 	display: none;
-// 	margin-top: 40px;
-// 	font-family: "Roboto-Light";
-// 	font-size: 30px;
-// 	color: #FFFFFF;
-// 	line-height: 2;
-// 	opacity: 0.5;
-// 	ol{
-// 		list-style-type: none;
-// 	}
-// }
 
 .weather{
 	clear: both;
@@ -107,9 +127,7 @@ ul,ol{
 	ul{
 		padding: 0;
 		padding-top: 20px;
-		font-family: Roboto-Bold;
 		font-size: 30px;
-		color: #FFFFFF;
 		line-height: 39px;
 		border-top: 1px solid;
 		li{
@@ -139,9 +157,7 @@ ul,ol{
 				}
 			}
 			.rainfall{
-				font-family: Roboto-Bold;
 				font-size: 20px;
-				color: #FFFFFF;
 				line-height: 26px;
 			}
 		}

@@ -10,9 +10,15 @@ gulp.task('serve', ['less'],function() {
 
 gulp.task('less', function() {
     return gulp.src('less/*.less')
-    .pipe(less(''))
+    .pipe(less())
     .pipe(gulp.dest('assets/css'))
     .pipe(browserSync.stream());
 });
+
+// gulp.task('watch', function(){
+// 	gulp.watch('less/*.less', ['less']);
+// 	gulp.watch('*.html', ['serve']);
+// 	console.log('hoge');
+// });
 
 gulp.task('default',['serve']);
