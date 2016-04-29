@@ -131,21 +131,6 @@ refleshTime();
 setInterval(refleshTime,1000);
 
 // =====================
-// -- animation --
-// =====================
-$('#blink').addClass('flash');
-$('.fade-in-6').addClass('fadeInUp');
-$('.fade-in-7').addClass('fadeInUp');
-
-// .weather ul liにアニメーション管理用のclassを付与
-$(function(){
-	$('.weather ul li').each(function(i){ 
-    $(this).attr('class','fade-in-' + (i+1)); //fade-inの連番Classを振る
-    $(this).addClass('animated bounceIn'); // animation用のclass付与
-  });
-});
-
-// =====================
 // -- slide menu --
 // =====================
 function openSlide(){

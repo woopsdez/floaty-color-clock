@@ -5,12 +5,11 @@
 @time : 10s;
 // @time : 86400s;
 
-// 背景色 ----------
 
+// 背景色 ----------
 body{
   animation: color-change @time infinite alternate;
 }
-
 @keyframes color-change {
   0% { background-color: hsla(281, 44%, 61%, 1); }
   25% { background-color: hsla(46, 44%, 61%, 1); }
@@ -20,104 +19,71 @@ body{
 }
 
 // 画像回転 ----------
-
 .bg img{
-	animation: rotate-sun @time infinite linear;
   animation: rotate-sun @time infinite linear;
 }
-
 @keyframes rotate-sun {
-	0%{transform:rotate(90deg);}
-	25%{transform:rotate(0deg);}
-	50%{transform:rotate(-90deg);}
-	75%{transform:rotate(-180deg);}
-	100%{transform:rotate(-270deg);}
+  0%{transform:rotate(90deg);}
+  25%{transform:rotate(0deg);}
+  50%{transform:rotate(-90deg);}
+  75%{transform:rotate(-180deg);}
+  100%{transform:rotate(-270deg);}
 }
 
-.weather ul {
-	animation: animationFrames ease 1s;
-  animation-iteration-count: 1;
-  transform-origin: 0% 0%;
-  animation-duration: 10s;
-  animation: animationFrames ease 1s;
-  animation-iteration-count: 1;
-  transform-origin: 0% 0%;
-}
 
-@keyframes animationFrames{
-  0% {
-    left:0px;
-    top:0px;
-    opacity:1;
-    transform:  rotate(0deg) scaleX(0) scaleY(1) ;
-  }
-  100% {
-    left:0px;
-    top:0px;
-    opacity:1;
-    transform:  rotate(0deg) scaleX(1) scaleY(1) ;
-  }
-}
-@keyframes animationFrames {
-  0% {
-    left:0px;
-    top:0px;
-    opacity:1;
-    transform:  rotate(0deg) scaleX(0) scaleY(1) ;
-  }
-  100% {
-    left:0px;
-    top:0px;
-    opacity:1;
-    transform:  rotate(0deg) scaleX(1) scaleY(1) ;
-  }
-}
-
-.fade-in-1{
-			    animation-delay: 1.5s;
-  animation-delay: 1.5s;
-}
-.fade-in-2{
-			    animation-delay: 1.6s;
-  animation-delay: 1.6s;
-}
-.fade-in-3{
-			    animation-delay: 1.8s;
-  animation-delay: 1.8s;
-}
-.fade-in-4{
-			    animation-delay: 1.9s;
-  animation-delay: 1.9s;
-}
-.fade-in-5{
-			    animation-delay: 2s;
-  animation-delay: 2s;
-}
-.fade-in-6{
-			    animation-delay: 0.6s;
-  animation-delay: 0.6s;
-  animation-duration: 5s;
-     -moz-animation-duration: 5s;
-      -ms-animation-duration: 5s;
-       -o-animation-duration: 5s;
-          animation-duration: 5s;
-}
-
-.fade-in-7{
-			    animation-delay: 0.9s;
-  animation-delay: 0.9s;
-  animation-duration: 5s;
-     -moz-animation-duration: 5s;
-      -ms-animation-duration: 5s;
-       -o-animation-duration: 5s;
-          animation-duration: 5s;
-}
-
+// 点滅 ------------
 #blink {
-			    animation-duration: 10s;
-			    animation-delay: 1s;
-			    animation-iteration-count: infinite;
-  animation-duration: 6s;
-  animation-delay: 1s;
-  animation-iteration-count: infinite;
+ animation: blink 2s infinite alternate;
+}
+@keyframes blink{
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+// fadein ----------
+.fadein{
+ animation: fadein 2s ease-in 0s 1 alternate backwards;
+}
+.hanging.fadein{
+ animation: fadein 2s ease-in 0.3s 1 alternate backwards;
+}
+@keyframes fadein{
+    0% {opacity:0; margin-top: -10px;}
+  100% {opacity:1; margin-top: 0;}
+}
+
+// 左から右へ展開 ----------
+.liner {
+	animation: animation-frames 1s ease-in-out 3s 1 alternate backwards;
+  transform-origin: 0% 0%;
+  border-top: 1px solid #FFF;
+}
+@keyframes animation-frames{
+  0% {
+    opacity:0;
+    transform: rotate(0deg) scaleX(0) scaleY(1) ;
+  }
+  100% {
+    opacity:1;
+    transform: rotate(0deg) scaleX(1) scaleY(1) ;
+  }
+}
+
+// 順番に表示
+.weather ul li:nth-child(1){
+  animation: popin .5s ease-in 3.5s 1 alternate backwards; 
+}
+.weather ul li:nth-child(2){
+  animation: popin .5s ease-in 3.75s 1 alternate backwards; 
+}
+.weather ul li:nth-child(3){
+  animation: popin .5s ease-in 4s 1 alternate backwards; 
+}
+.weather ul li:nth-child(4){
+  animation: popin .5s ease-in 4.25s 1 alternate backwards; 
+}
+@keyframes popin{
+  0%{opacity: 0; margin-top: -10px;}
+  90%{opacity: 1; margin-top: 3px;}
+  100%{opacity: 1; margin-top: 0px;}
 }
