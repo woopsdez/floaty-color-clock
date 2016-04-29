@@ -38,21 +38,30 @@ function getTime () {
 // 天気情報を取得
 // =====================
 
-// selectのデータ取得
+var prefName, areaName;
+
+// selectの値が保存してあれば、それを初期値とする
+if (localStorage.prefNum !== null) {
+	console.log('「' + localStorage.prefNum + '」があるよ')
+	prefNum = localStorage.prefNum;
+	$("#pref").val(String(prefNum));
+	$("body").append("<script src=\"http://www.drk7.jp/weather/json/" + prefNum + ".js\"></script>");
+};
+
+// 地域の変更
 $("#pref").change(
 	function(){
 		prefNum = $('select option:selected').val();
+		localStorage.setItem('prefNum', prefNum);
 		$("body").append("<script src=\"http://www.drk7.jp/weather/json/" + prefNum + ".js\"></script>");
 		$('#area').remove();
 		$('#setArea').append('<select id="area" name="ara"></select>');
 	}
 );
 
-var prefName, areaName;
 
 drk7jpweather = { // objectを定義
 	"callback" : function(json){ // 無名関数でcallbackを定義
-		var prefNum = 0;
 	  // --- データ取得 ---
 		// 地域データを取得
 		prefName = json.pref['id'];
