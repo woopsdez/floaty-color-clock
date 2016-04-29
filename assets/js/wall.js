@@ -165,16 +165,44 @@ $('.detail').click(openSlide);
 // -- css set propaty --
 // =====================
 
+// 設定を保存
+if (localStorage.color !== null) {
+	console.log(localStorage.color);
+	$('.detail').css('color', localStorage.color);
+	$('#textColor input').each(function(){
+		var str = $(this).attr('value');
+		if (localStorage.color === str) {
+			$(this).prop('checked',true);
+		};
+	});
+};
+
+if (localStorage.fontName !== null) {
+	console.log(localStorage.fontName);
+	$('body').css('font-family', localStorage.fontName);
+
+	// 選択した書体をselectedにしておく
+	$('#selectFont option').each(function () {
+		var str = $(this).attr('value');
+		if (localStorage.fontName === str) {
+			$('#selectFont').val(str);
+		};
+	});
+};
+
 // text color
-$('#textWhite').on('click', function(){
-	$('.detail').css("color","#FFF");
-})
-$('#textBlack').on('click', function(){
-	$('.detail').css("color","#000");
-})
+function setTextColor(e, colorName){
+	$(e).on('click', function(){
+		localStorage.setItem('color', colorName);
+		$('.detail').css("color", colorName);
+	})
+}
+setTextColor('#textWhite', 'white')
+setTextColor('#textBlack', 'black')
 
 // font
 $('.style #selectFont').change(function(){
-	var fontName = $(this).val();
-	$('body').css("font-family",fontName);
+	fontName = $(this).val();
+	localStorage.setItem('fontName', fontName);
+	$('body').css("font-family", localStorage.fontName);
 });

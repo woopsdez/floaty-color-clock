@@ -64,25 +64,54 @@ body{
 	float: left;
 	opacity: 0.8;
 	background: #000;
+	.wrapper{min-height: 300px;}
+	section{padding: 10px;}
 	a{color: #FFF;}
-	h2{margin-bottom: 10px;}
-	form{margin-bottom: 3px;}
+	h2{margin: 10px 0;}
+	select{width: 300px;}
 	footer{
 		position: absolute;
 		width: inherit;
-		bottom: 4em;
+		bottom: 1em;
 		padding-top: 20px;
 		text-align: center;
 	}
 
 	.column-2{
-		input[type=button]{
-			width: 41.5%;
-			display: inline-table;
-		}
+		ul{
+			padding-left: 0;
+			li{
+				display: inline-block;
+				position: relative;
+				width: 47%;
+				padding: .3em 0;
+				input[type=radio]{
+					background-color: #222;
+					opacity: 0;
+				}
+				input[type=radio]:checked+label{
+					background-color: #F25577;
+				}
+				label{
+					display: block;
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 2em;
+					font-size: 20px;
+					background-color: #222;
+					border-radius: 3px;
+					span{
+						display: block;
+						position: relative;
+						top: .4em;
+						text-align: center;
+					}
+				}
+			}	
+		}	
 	}
-
-
 
 	.set-startpage{
 		margin-top: 60px;
