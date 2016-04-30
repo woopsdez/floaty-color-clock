@@ -221,6 +221,7 @@ function setTextColor(e, colorName){
 	$(e).on('click', function(){
 		localStorage.setItem('color', colorName);
 		$('.detail').css("color", colorName);
+			$('.bg img').attr('src','assets/img/rotateGround-' + localStorage.color + '.png')
 	});
 }
 setTextColor('#textWhite', 'white');
