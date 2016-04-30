@@ -1,6 +1,9 @@
 
 # Created by https://www.gitignore.io/api/osx,sublimetext,node
 
+### MySetting ###
+dist
+
 ### OSX ###
 .DS_Store
 .AppleDouble
