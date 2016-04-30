@@ -65,6 +65,8 @@ body {
   overflow: hidden;
   color: #FFF;
   font-family: "HelveticaNeue-UltraLight", sans-serif;
+  background: url('../img/bg.svg') no-repeat right bottom;
+  background-blend-mode: multiply;
 }
 .bg {
   width: 100%;
@@ -229,6 +231,16 @@ body {
   position: absolute;
   top: 10px;
   left: 10px;
+  font-size: 20px;
+}
+.btn-social {
+  margin: 0;
+  padding-left: 0;
+  text-align: center;
+}
+.btn-social li {
+  display: inline-block;
+  padding-right: 10px;
   font-size: 20px;
 }
 body {
