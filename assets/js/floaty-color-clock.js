@@ -28,18 +28,15 @@ function getTime () {
 	// 現在時刻の秒数
 	var _sec = hours*60*60 + minutes*60 + seconds;
   var _per = _sec / 86400;
-  console.log(_per);
 
   // 桁を切り捨て
   var _pow = Math.pow(10, 2);
   var _pwdNum = Math.round(_per*_pow) / _pow;
-  console.log(_pwdNum);
 
   // hoge% = 今までの秒数 / 1日の秒数
 	// 「比べられる量」＝「もとにする量」×「割合」
 
 	var pwd = 360 * _pwdNum;
-	console.log(pwd);
 
 	// それぞれの値を返す
 	return {
