@@ -1,0 +1,42 @@
+# mod_deflateを利用して Gzip圧縮する設定
+<IfModule mod_deflate.c>
+  SetOutputFilter DEFLATE
+
+  # Mozilla4系、IE7、8の古いブラウザでは無効にする
+  BrowserMatch ^Mozilla/4\.0[678] no-gzip
+  BrowserMatch ^Mozilla/4 gzip-only-text/html
+  BrowserMatch \bMSIE\s(7|8) !no-gzip !gzip-only-text/html
+
+  # GIF、JPEG、PNG、ICOなど圧縮済みの画像は再圧縮しない
+  SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png|ico)$ no-gzip dont-vary
+  # プロクシサーバが間違ったコンテンツを配布しないようにする
+  Header append Vary Accept-Encoding env=!dont-vary
+
+  # 各コンテンツを圧縮する設定を記述
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# ブラウザへのキャッシュの設定
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  # キャッシュの初期化（1秒に設定）
+  ExpiresDefault "access plus 1 seconds"
+
+  # MIME Type ごとのキャッシュ設定
+  ExpiresByType text/css "access plus 1 weeks"
+  ExpiresByType text/js "access plus 1 weeks"
+  ExpiresByType text/javascript "access plus 1 weeks"
+  ExpiresByType image/gif "access plus 1 weeks"
+  ExpiresByType image/jpeg "access plus 1 weeks"
+  ExpiresByType image/png "access plus 1 weeks"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType application/pdf "access plus 1 weeks"
+  ExpiresByType application/javascript "access plus 1 weeks"
+  ExpiresByType application/x-javascript "access plus 1 weeks"
+  ExpiresByType application/x-shockwave-flash "access plus 1 weeks"
+  ExpiresByType application/x-font-ttf "access plus 1 year"
+  ExpiresByType application/x-font-woff "access plus 1 year"
+  ExpiresByType application/x-font-opentype "access plus 1 year"
+  ExpiresByType application/vnd.ms-fontobject "access plus 1 year"
+</IfModule>

@@ -26,7 +26,7 @@ var paths = {
 	html:    ['index.html'],
 	images:  ['assets/img/*'],
 	fonts:   ['assets/font/*'],
-	extras:  ['robots.txt', 'favicon.ico'],
+	extras:  ['robots.txt', 'favicon.ico',],
 };
 
 // ====================

@@ -42,10 +42,10 @@ body{
 	width: 100%;
 	text-align: center;
 	img{
+		overflow: hidden;
 		position: absolute;
-		left: 0;
-		top: 100px;
-		width: 200%;
+		left: -100px;
+		top: -100px;
 		@media screen and (min-width: 768px) {
 			width: 100%;
 			top: 600px;
@@ -138,8 +138,9 @@ body{
 	font-size: 40px;
 
 	.hm{
-		font-size: 200px;
+		font-size: 100px;
 		line-height: 1;
+		@media (min-width: 481px) { font-size: 200px; }
 	}
 }
 

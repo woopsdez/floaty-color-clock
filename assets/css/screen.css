@@ -73,10 +73,10 @@ body {
   text-align: center;
 }
 .bg img {
+  overflow: hidden;
   position: absolute;
-  left: 0;
-  top: 100px;
-  width: 200%;
+  left: -100px;
+  top: -100px;
 }
 @media screen and (min-width: 768px) {
   .bg img {
@@ -175,8 +175,13 @@ body {
   font-size: 40px;
 }
 .clock .hm {
-  font-size: 200px;
+  font-size: 100px;
   line-height: 1;
+}
+@media (min-width: 481px) {
+  .clock .hm {
+    font-size: 200px;
+  }
 }
 .weather {
   margin-top: 100px;
