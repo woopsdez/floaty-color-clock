@@ -190,11 +190,18 @@ $('.detail').click(openSlide);
 // -- css set propaty --
 // =====================
 
+// 初期化
+
 // 設定を保存
-if (localStorage.color !== undefined) {
+if (localStorage.color !== null) {
 	console.log(localStorage.color);
 	$('.detail').css('color', localStorage.color);
-	$('.bg img').attr('src','assets/img/rotateGround-' + localStorage.color + '.png')
+	
+	if (localStorage.color === undefined) {
+		$('.bg img').attr('src','assets/img/rotateGround-white.png');
+	};
+	$('.bg img').attr('src','assets/img/rotateGround-' + localStorage.color + '.png');
+
 	$('#textColor input').each(function(){
 		var str = $(this).attr('value');
 		if (localStorage.color === str) {
@@ -203,7 +210,7 @@ if (localStorage.color !== undefined) {
 	});
 }
 
-if (localStorage.fontName !== undefined) {
+if (localStorage.fontName !== null) {
 	console.log(localStorage.fontName);
 	$('body').css('font-family', localStorage.fontName);
 
