@@ -24,6 +24,7 @@
   "homepage": "https://github.com/woopsdez/woopsdez_start_wall#readme",
   "devDependencies": {
     "browser-sync": "^2.12.5",
+    "del": "^2.2.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-clean-css": "^2.0.6",
