@@ -174,6 +174,7 @@ $('.detail').click(openSlide);
 if (localStorage.color !== null) {
 	console.log(localStorage.color);
 	$('.detail').css('color', localStorage.color);
+	$('.bg img').attr('src', 'assets/img/rotateGround-' + localStorage.color + '.png');
 	$('#textColor input').each(function(){
 		var str = $(this).attr('value');
 		if (localStorage.color === str) {
@@ -199,6 +200,7 @@ if (localStorage.fontName !== null) {
 function setTextColor(e, colorName){
 	$(e).on('click', function(){
 		localStorage.setItem('color', colorName);
+		$('.bg img').attr('src', 'assets/img/rotateGround-' + colorName + '.png')
 		$('.detail').css("color", colorName);
 	})
 }
