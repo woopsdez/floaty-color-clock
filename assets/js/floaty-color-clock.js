@@ -191,19 +191,22 @@ $('.detail').click(openSlide);
 // =====================
 
 // 設定を保存
-if (localStorage.color !== null) {
+if (localStorage.color !== undefined) {
 	console.log(localStorage.color);
 	$('.detail').css('color', localStorage.color);
-	$('.bg img').attr('src','assets/img/rotateGround-' + localStorage.color + '.png')
+	$('.bg img').attr('src','assets/img/rotateGround-' + localStorage.color + '.png');
 	$('#textColor input').each(function(){
 		var str = $(this).attr('value');
 		if (localStorage.color === str) {
 			$(this).prop('checked',true);
 		}
 	});
+} else {
+	localStorage.setItem('color', 'white');
+	$('.bg img').attr('src','assets/img/rotateGround-' + localStorage.color + '.png');
 }
 
-if (localStorage.fontName !== null) {
+if (localStorage.fontName !== undefined) {
 	console.log(localStorage.fontName);
 	$('body').css('font-family', localStorage.fontName);
 
@@ -214,6 +217,8 @@ if (localStorage.fontName !== null) {
 			$('#selectFont').val(str);
 		}
 	});
+} else {
+	localStorage.setItem('fontName', 'HelveticaNeue-UltraLight');
 }
 
 // text color
