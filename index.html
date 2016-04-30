@@ -19,12 +19,13 @@
 	<!-- ogp -->
 	<title>Start Page</title>
 	<link href="assets/css/screen.css" rel="stylesheet" media="screen">
+	<link rel="stylesheet" href="assets/css/animate.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 	<link href="assets/css/weather-icons.css" rel="stylesheet" media="screen">
 </head>
 <body>
 	<div class="bg">
-		<img src="assets/img/rotateGround-white.png">
+		<img class="animated zoomIn" src="assets/img/rotateGround-white.png">
 	</div>
 	<section class="setting">
 		<div class="wrapper">
@@ -144,8 +145,8 @@
 
 		<div class="detail" id="target">
 			<section class="clock">
-				<time class="hm fadein"><span id="numH">00</span><span id="blink">:</span><span id="numM">00</span></time>
-				<div class="hanging fadein">
+				<time class="hm slidein"><span id="numH">00</span><span id="blink">:</span><span id="numM">00</span></time>
+				<div class="hanging slidein">
 					<time class="dw" id="dw">hogehoge</time>
 					<span class="ar" id="areaName"><small>fugafuga</small></span>
 				</div>

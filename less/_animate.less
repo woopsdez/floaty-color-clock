@@ -18,19 +18,6 @@ body{
   100% { background-color: hsla(281, 44%, 61%, 1); }
 }
 
-// 画像回転 ----------
-.bg img{
-  animation: rotate-sun @hour24 infinite linear;
-}
-@keyframes rotate-sun {
-  0%{transform:rotate(90deg);}
-  25%{transform:rotate(0deg);}
-  50%{transform:rotate(-90deg);}
-  75%{transform:rotate(-180deg);}
-  100%{transform:rotate(-270deg);}
-}
-
-
 // 点滅 ------------
 #blink {
  animation: blink 2s infinite alternate;
@@ -41,13 +28,13 @@ body{
 }
 
 // fadein ----------
-.fadein{
+.slidein{
  animation: fadein 2s ease-in 0s 1 alternate backwards;
 }
-.hanging.fadein{
+.hanging.slidein{
  animation: fadein 2s ease-in 0.3s 1 alternate backwards;
 }
-@keyframes fadein{
+@keyframes slidein{
     0% {opacity:0; margin-top: -10px;}
   100% {opacity:1; margin-top: 0;}
 }

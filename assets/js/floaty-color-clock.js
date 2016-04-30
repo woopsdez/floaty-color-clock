@@ -32,16 +32,22 @@ function getTime () {
 
   // 桁を切り捨て
   var _pow = Math.pow(10, 2);
-  var pwd = Math.round(_per*_pow) / _pow;
-  console.log(pwd);
+  var _pwdNum = Math.round(_per*_pow) / _pow;
+  console.log(_pwdNum);
+
+  // hoge% = 今までの秒数 / 1日の秒数
+	// 「比べられる量」＝「もとにする量」×「割合」
+
+	var pwd = 360 * _pwdNum;
+	console.log(pwd);
 
 	// それぞれの値を返す
 	return {
-		"hours" : hours,
+		"hours"   : hours,
 		"minutes" : minutes,
 		"seconds" : seconds,
-		"mdw" : mdw,
-		"pwd" : pwd
+		"mdw"     : mdw,
+		"pwd"     : pwd
 	};
 }
 
@@ -138,8 +144,7 @@ function refleshTime (){
 	$("#numM").text(t.minutes);
 	$("#dw").text(t.mdw);
 
-	// 背景色
-	$('body').css()
+	$('.bg img').css('transform', 'rotate(-'+ t.pwd +'deg)').delay(800).addClass('zoomIn').fadeIn();
 }
 
 refleshTime();
@@ -189,6 +194,7 @@ $('.detail').click(openSlide);
 if (localStorage.color !== null) {
 	console.log(localStorage.color);
 	$('.detail').css('color', localStorage.color);
+	$('.bg img').attr('src','assets/img/rotateGround-' + localStorage.color + '.png')
 	$('#textColor input').each(function(){
 		var str = $(this).attr('value');
 		if (localStorage.color === str) {

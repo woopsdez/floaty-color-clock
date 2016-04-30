@@ -73,21 +73,16 @@ body {
   text-align: center;
 }
 .bg img {
-  overflow: hidden;
+  display: none;
   position: absolute;
-  left: -100px;
-  top: -100px;
+  top: 30px;
+  left: -50%;
+  width: 200%;
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 480px) {
   .bg img {
+    left: 0;
     width: 100%;
-    top: 600px;
-  }
-}
-@media screen and (min-width: 1000px) {
-  .bg img {
-    width: 100%;
-    top: 100px;
   }
 }
 .setting {
@@ -286,54 +281,6 @@ body {
     background-color: #ac70c7;
   }
 }
-.bg img {
-  -webkit-animation: rotate-sun 86400s infinite linear;
-  animation: rotate-sun 86400s infinite linear;
-}
-@-webkit-keyframes rotate-sun {
-  0% {
-    -webkit-transform: rotate(90deg);
-    transform: rotate(90deg);
-  }
-  25% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  50% {
-    -webkit-transform: rotate(-90deg);
-    transform: rotate(-90deg);
-  }
-  75% {
-    -webkit-transform: rotate(-180deg);
-    transform: rotate(-180deg);
-  }
-  100% {
-    -webkit-transform: rotate(-270deg);
-    transform: rotate(-270deg);
-  }
-}
-@keyframes rotate-sun {
-  0% {
-    -webkit-transform: rotate(90deg);
-    transform: rotate(90deg);
-  }
-  25% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  50% {
-    -webkit-transform: rotate(-90deg);
-    transform: rotate(-90deg);
-  }
-  75% {
-    -webkit-transform: rotate(-180deg);
-    transform: rotate(-180deg);
-  }
-  100% {
-    -webkit-transform: rotate(-270deg);
-    transform: rotate(-270deg);
-  }
-}
 #blink {
   -webkit-animation: blink 2s infinite alternate;
   animation: blink 2s infinite alternate;
@@ -354,15 +301,15 @@ body {
     opacity: 1;
   }
 }
-.fadein {
+.slidein {
   -webkit-animation: fadein 2s ease-in 0s 1 alternate backwards;
   animation: fadein 2s ease-in 0s 1 alternate backwards;
 }
-.hanging.fadein {
+.hanging.slidein {
   -webkit-animation: fadein 2s ease-in 0.3s 1 alternate backwards;
   animation: fadein 2s ease-in 0.3s 1 alternate backwards;
 }
-@-webkit-keyframes fadein {
+@-webkit-keyframes slidein {
   0% {
     opacity: 0;
     margin-top: -10px;
@@ -372,7 +319,7 @@ body {
     margin-top: 0;
   }
 }
-@keyframes fadein {
+@keyframes slidein {
   0% {
     opacity: 0;
     margin-top: -10px;
