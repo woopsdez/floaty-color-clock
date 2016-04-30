@@ -191,7 +191,7 @@ $('.detail').click(openSlide);
 // =====================
 
 // 設定を保存
-if (localStorage.color !== null) {
+if (localStorage.color !== undefined) {
 	console.log(localStorage.color);
 	$('.detail').css('color', localStorage.color);
 	$('.bg img').attr('src','assets/img/rotateGround-' + localStorage.color + '.png')
@@ -203,7 +203,7 @@ if (localStorage.color !== null) {
 	});
 }
 
-if (localStorage.fontName !== null) {
+if (localStorage.fontName !== undefined) {
 	console.log(localStorage.fontName);
 	$('body').css('font-family', localStorage.fontName);
 
