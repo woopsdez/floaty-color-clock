@@ -6,7 +6,7 @@
 // 時間取得
 function getTime () {
 	var days = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
-	var d = new Date; // インスタンス作成
+	var d = new Date(); // インスタンス作成
 
 	// それぞれを変数に入れていく
 	var month = d.getMonth() + 1;
@@ -43,11 +43,11 @@ var prefNum = 13;
 
 // selectの値が保存してあれば、それを初期値とする
 if (localStorage.prefNum !== undefined) {
-	console.log('「' + localStorage.prefNum + '」があるよ')
+	console.log('「' + localStorage.prefNum + '」があるよ');
 	prefNum = localStorage.prefNum;
 	$("#pref").val(String(prefNum));
 	$("body").append("<script src=\"http://www.drk7.jp/weather/json/" + prefNum + ".js\"></script>");
-};
+}
 
 // 地域の変更
 $("#pref").change(
@@ -65,10 +65,10 @@ drk7jpweather = { // objectを定義
 	"callback" : function(json){ // 無名関数でcallbackを定義
 	  // --- データ取得 ---
 		// 地域データを取得
-		prefName = json.pref['id'];
+		prefName = json.pref.id;
 		var area = json.pref.area;
 		for (var key in area){ // areaのプロパティ名をkeyに入れる
-			areaName = key
+			areaName = key;
 			$("#area").append('<option value="'+ key +'">'+ key +'</option>');
 		}
 
@@ -80,9 +80,9 @@ drk7jpweather = { // objectを定義
 
 		// 長ったらしいパスを格納
 		// -- TODO 処理部分HTMLにclassを入れて短縮する --
-		var time = $(".weather ul li time")
-		var icon = $(".weather i")
-		var rainNum = $(".rainfall")
+		var time = $(".weather ul li time");
+		var icon = $(".weather i");
+		var rainNum = $(".rainfall");
 
 		for (var i = 0; i < period.length; i++) { // periodに格納している数だけ繰り返す
 			data = period[i]; // periodをdataに入れる
@@ -92,25 +92,25 @@ drk7jpweather = { // objectを定義
 				iconClass = "wi wi-day-sunny";
 			}else
 			if (data.content > 31 && data.content <= 60 ) {
-				iconClass = "wi wi-cloudy"
+				iconClass = "wi wi-cloudy";
 			}else
 			if (data.content >= 61){
-				iconClass = "wi wi-rain"
+				iconClass = "wi wi-rain";
 			}else{
-				iconClass = "fa fa-question"
-			};
+				iconClass = "fa fa-question";
+			}
 
-			$(icon[i]).attr("class", "wi "+iconClass)
-			$(rainNum[i]).text(data.content+"%")
-		};
+			$(icon[i]).attr("class", "wi "+iconClass);
+			$(rainNum[i]).text(data.content+"%");
+		}
 
 		// -- styling --
 		setTimeout(function(){
 			var maxVal = 0;
 			$('i.wi').each(function(index,ele){
-				maxVal = Math.max(maxVal, $(this).height())
+				maxVal = Math.max(maxVal, $(this).height());
 			});
-			$('i.wi').height(maxVal)
+			$('i.wi').height(maxVal);
 		},1000);
 
 		// 県名を英語に変換
@@ -118,7 +118,7 @@ drk7jpweather = { // objectを定義
 		var prefNameEn = jp.prefConvert(prefName, "en");
 		$("#areaName small").text(prefNameEn);
 	}
-}
+};
 
 // 取得した時間をHTMLに書き込む
 function refleshTime (){
@@ -141,7 +141,7 @@ function openSlide(){
 	$('.detail').animate({left: '280px'});
 	$('.on').off('click');
 	$('.on').click(closeSlide);
-};
+}
 
 function closeSlide(){
 	$(this).removeClass('on');
@@ -150,7 +150,7 @@ function closeSlide(){
 	$('.detail').animate({left: '0'});
 	$('.off').off('click');
 	$('.off').click(openSlide);
-};
+}
 
 $('.off').hover(
 	function(){
@@ -179,9 +179,9 @@ if (localStorage.color !== null) {
 		var str = $(this).attr('value');
 		if (localStorage.color === str) {
 			$(this).prop('checked',true);
-		};
+		}
 	});
-};
+}
 
 if (localStorage.fontName !== null) {
 	console.log(localStorage.fontName);
@@ -192,19 +192,19 @@ if (localStorage.fontName !== null) {
 		var str = $(this).attr('value');
 		if (localStorage.fontName === str) {
 			$('#selectFont').val(str);
-		};
+		}
 	});
-};
+}
 
 // text color
 function setTextColor(e, colorName){
 	$(e).on('click', function(){
 		localStorage.setItem('color', colorName);
 		$('.detail').css("color", colorName);
-	})
+	});
 }
-setTextColor('#textWhite', 'white')
-setTextColor('#textBlack', 'black')
+setTextColor('#textWhite', 'white');
+setTextColor('#textBlack', 'black');
 
 // font
 $('.style #selectFont').change(function(){
