@@ -202,7 +202,8 @@ if (localStorage.color !== undefined) {
 		}
 	});
 } else {
-	$('.bg img').attr('src','assets/img/rotateGround-white.png');
+	localStorage.color = white;
+	$('.bg img').attr('src','assets/img/rotateGround-' + localStorage.color + '.png');
 }
 
 if (localStorage.fontName !== null) {
