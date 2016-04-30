@@ -190,24 +190,19 @@ $('.detail').click(openSlide);
 // -- css set propaty --
 // =====================
 
-// 初期化
-
 // 設定を保存
-if (localStorage.color !== null) {
+if (localStorage.color !== undefined) {
 	console.log(localStorage.color);
 	$('.detail').css('color', localStorage.color);
-	
-	if (localStorage.color === undefined) {
-		$('.bg img').attr('src','assets/img/rotateGround-white.png');
-	};
 	$('.bg img').attr('src','assets/img/rotateGround-' + localStorage.color + '.png');
-
 	$('#textColor input').each(function(){
 		var str = $(this).attr('value');
 		if (localStorage.color === str) {
 			$(this).prop('checked',true);
 		}
 	});
+} else {
+	$('.bg img').attr('src','assets/img/rotateGround-white.png');
 }
 
 if (localStorage.fontName !== null) {
