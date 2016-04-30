@@ -22,6 +22,7 @@ Produced for the javascript of learning.
 ## TODO
 やらないかもしれない
 
+* Chrome エクステンション化
 * 書体の追加
 * Google カレンダーからのスケジュールの取得、表示
 * ゴミの日 Notice
