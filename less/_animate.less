@@ -3,7 +3,7 @@
 // ==================================
 
 @time : 10s;
-// @time : 86400s;
+@hour24 : 86400s;
 
 
 // 背景色 ----------
@@ -20,7 +20,7 @@ body{
 
 // 画像回転 ----------
 .bg img{
-  animation: rotate-sun @time infinite linear;
+  animation: rotate-sun @hour24 infinite linear;
 }
 @keyframes rotate-sun {
   0%{transform:rotate(90deg);}

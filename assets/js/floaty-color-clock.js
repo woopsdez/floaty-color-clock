@@ -23,7 +23,17 @@ function getTime () {
 	}
 
 	// 日付と曜日をまとめる
-	mdw = month + "/" + day + " " + week;
+	var mdw = month + "/" + day + " " + week;
+
+	// 現在時刻の秒数
+	var _sec = hours*60*60 + minutes*60 + seconds;
+  var _per = _sec / 86400;
+  console.log(_per);
+
+  // 桁を切り捨て
+  var _pow = Math.pow(10, 2);
+  var pwd = Math.round(_per*_pow) / _pow;
+  console.log(pwd);
 
 	// それぞれの値を返す
 	return {
@@ -31,6 +41,7 @@ function getTime () {
 		"minutes" : minutes,
 		"seconds" : seconds,
 		"mdw" : mdw,
+		"pwd" : pwd
 	};
 }
 
@@ -126,6 +137,9 @@ function refleshTime (){
 	$("#numH").text(t.hours);
 	$("#numM").text(t.minutes);
 	$("#dw").text(t.mdw);
+
+	// 背景色
+	$('body').css()
 }
 
 refleshTime();

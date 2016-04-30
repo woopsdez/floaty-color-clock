@@ -287,8 +287,8 @@ body {
   }
 }
 .bg img {
-  -webkit-animation: rotate-sun 10s infinite linear;
-  animation: rotate-sun 10s infinite linear;
+  -webkit-animation: rotate-sun 86400s infinite linear;
+  animation: rotate-sun 86400s infinite linear;
 }
 @-webkit-keyframes rotate-sun {
   0% {
