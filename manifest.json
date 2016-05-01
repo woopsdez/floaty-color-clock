@@ -14,7 +14,7 @@
       "persistent": false
     },
   "chrome_url_overrides": {
-    "newtab": "http://woopsdez.github.io/floaty-color-clock/"
+    "newtab": "index.html"
   },
   "permissions": [ "activeTab", "http://www.drk7.jp/"],
   "content_security_policy": "script-src 'self' https://www.google-analytics.com; object-src 'self'"

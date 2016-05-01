@@ -5,15 +5,15 @@
 
 // 時間取得
 function getTime () {
-	var days = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
-	var d = new Date(); // インスタンス作成
+	var days    = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
+	var d       = new Date(); // インスタンス作成
 
 	// それぞれを変数に入れていく
-	var month = d.getMonth() + 1;
-	var day = d.getDate();
-	var week = days[d.getDay()];
+	var month   = d.getMonth() + 1;
+	var day     = d.getDate();
+	var week    = days[d.getDay()];
 
-	var hours = d.getHours();
+	var hours   = d.getHours();
 	var minutes = d.getMinutes();
 	var seconds = d.getSeconds();
 
@@ -25,18 +25,14 @@ function getTime () {
 	// 日付と曜日をまとめる
 	var mdw = month + "/" + day + " " + week;
 
-	// 現在時刻の秒数
-	var _sec = hours*60*60 + minutes*60 + seconds;
-  var _per = _sec / 86400;
-
-  // 桁を切り捨て
-  var _pow = Math.pow(10, 2);
-  var _pwdNum = Math.round(_per*_pow) / _pow;
-
+	// 割合を求める
   // hoge% = 今までの秒数 / 1日の秒数
 	// 「比べられる量」＝「もとにする量」×「割合」
-
-	var pwd = 360 * _pwdNum;
+	var _sec = hours*60*60 + minutes*60 + seconds; // 現在時刻の秒数
+	var _per = _sec / 86400;  
+  var _pow = Math.pow(10, 2); // 桁を切り捨て
+  var _pwdNum = Math.round(_per*_pow) / _pow;
+  var pwd = 360 * _pwdNum;
 
 	// それぞれの値を返す
 	return {
@@ -52,30 +48,6 @@ function getTime () {
 // 天気情報を取得
 // =====================
 
-var prefName, areaName;
-var prefNum = 13;
-
-// selectの値が保存してあれば、それを初期値とする
-if (localStorage.prefNum !== undefined) {
-	console.log('「' + localStorage.prefNum + '」があるよ');
-	prefNum = localStorage.prefNum;
-	$.get('http://www.drk7.jp/weather/json/'+ prefNum +'.js', extractWeatherData);
-	$("#pref").val(String(prefNum));
-} else {
-	localStorage.setItem('prefNum', prefNum);
-}
-
-// 地域の変更
-$("#pref").change(
-	function(){
-		prefNum = $('select option:selected').val();
-		localStorage.setItem('prefNum', prefNum);
-		$.get('http://www.drk7.jp/weather/json/'+ prefNum +'.js', extractWeatherData);
-		$('#area').remove();
-		$('#setArea').append('<select id="area" name="ara"></select>');
-	}
-);
-
 function extractWeatherData (jsonp) {
 	var re = /^[^{]*({.*})[^}]*$/;
 	var data = jsonp.match(re);
@@ -86,61 +58,60 @@ function extractWeatherData (jsonp) {
 }
 
 function processWeatherData (data) {
-	// --- データ取得 ---
 		// 地域データを取得
-		prefName = data.pref.id;
+		var prefName = data.pref.id;
 		var area = data.pref.area;
 		for (var key in area){ // areaのプロパティ名をkeyに入れる
-			areaName = key;
+			var areaName = key;
 			$("#area").append('<option value="'+ key +'">'+ key +'</option>');
 		}
 
 		// 降水確立を取得
 		var period = data.pref.area[key].info[0].rainfallchance.period; //長いので一時格納			
 
-		// 処理用の変数や配列に格納
-		var data, num, iconImg, max, min, average;
-
-		// 長ったらしいパスを格納
-		// -- TODO 処理部分HTMLにclassを入れて短縮する --
-		var time = $(".weather ul li time");
-		var icon = $(".weather i");
-		var rainNum = $(".rainfall");
-
 		for (var i = 0; i < period.length; i++) { // periodに格納している数だけ繰り返す
-			data = period[i]; // periodをdataに入れる
+			var data = period[i]; // periodをdataに入れる
 			// --- 天気の処理 ---
 			// 降水確立の数字をアイコンにマッピング
 			if ( data.content <= 30 ) {
-				iconClass = "wi wi-day-sunny";
+				var iconClass = "wi wi-day-sunny";
 			}else
-			if (data.content > 31 && data.content <= 60 ) {
-				iconClass = "wi wi-cloudy";
+			if ( data.content > 31 && data.content <= 60 ) {
+				var iconClass = "wi wi-cloudy";
 			}else
-			if (data.content >= 61){
-				iconClass = "wi wi-rain";
+			if ( data.content >= 61){
+				var iconClass = "wi wi-rain";
 			}else{
-				iconClass = "fa fa-question";
+				var iconClass = "fa fa-question";
 			}
 
-			$(icon[i]).attr("class", "wi "+iconClass);
+			// 長ったらしいパスを格納
+			var icon = $(".weather i");
+			var rainNum = $(".rainfall");
+
+			$(icon[i]).attr("class", iconClass);
 			$(rainNum[i]).text(data.content+"%");
 		}
-
-		// -- styling --
-		setTimeout(function(){
-			var maxVal = 0;
-			$('i.wi').each(function(index,ele){
-				maxVal = Math.max(maxVal, $(this).height());
-			});
-			$('i.wi').height(maxVal);
-		},1000);
 
 		// 県名を英語に変換
 		var jp = jpPrefecture;
 		var prefNameEn = jp.prefConvert(prefName, "en");
+
+		console.log(prefNameEn)
 		$("#areaName small").text(prefNameEn);
-	}
+		$("#pref").val(String(prefNum));
+
+	// 地域の変更
+	$("#pref").change(
+		function(){
+			prefNum = $('select option:selected').val();
+			localStorage.setItem('prefNum', prefNum);
+			$.get('http://www.drk7.jp/weather/json/'+ prefNum +'.js', extractWeatherData);
+			$('#area').remove();
+			$('#setArea').append('<select id="area" name="ara"></select>');
+		}
+		);
+}
 
 // 取得した時間をHTMLに書き込む
 function refleshTime (){
@@ -148,8 +119,17 @@ function refleshTime (){
 	$("#numH").text(t.hours);
 	$("#numM").text(t.minutes);
 	$("#dw").text(t.mdw);
-
 	$('.bg img').css('transform', 'rotate(-'+ t.pwd +'deg)').delay(800).addClass('zoomIn').fadeIn();
+}
+
+// ロードするjson urlの初期値
+var prefNum = 13;
+
+// selectの値が保存してあれば、それを初期値とする
+if (localStorage.prefNum !== undefined) {
+	prefNum = localStorage.prefNum;
+} else {
+	localStorage.setItem('prefNum', prefNum);
 }
 
 $.get('http://www.drk7.jp/weather/json/'+ prefNum +'.js', extractWeatherData);
@@ -232,7 +212,7 @@ function setTextColor(e, colorName){
 	$(e).on('click', function(){
 		localStorage.setItem('color', colorName);
 		$('.detail').css("color", colorName);
-			$('.bg img').attr('src','assets/img/rotateGround-' + localStorage.color + '.png')
+		$('.bg img').attr('src','assets/img/rotateGround-' + localStorage.color + '.png')
 	});
 }
 setTextColor('#textWhite', 'white');
@@ -296,9 +276,9 @@ if(typeof window.orientation != "undefined" || (document.uniqueID && document.do
 // ====================
 
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-	ga('create', 'UA-413655-13', 'auto');
-	ga('send', 'pageview');
+ga('create', 'UA-413655-13', 'auto');
+ga('send', 'pageview');
