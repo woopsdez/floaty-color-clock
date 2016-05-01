@@ -24,9 +24,9 @@ var paths = {
 	scripts: ['assets/js/floaty-color-clock.js'],
 	styles:  ['assets/css/*.css'],
 	html:    ['index.html'],
-	images:  ['assets/img/*'],
+	images:  ['assets/img/**/*'],
 	fonts:   ['assets/font/*'],
-	extras:  ['robots.txt'],
+	extras:  ['robots.txt', 'manifest.json'],
 };
 
 // ====================
@@ -89,7 +89,7 @@ gulp.task('copy', ['clean'], function() {
  gulp.src(paths.fonts, {cwd: bases.app})
  .pipe(gulp.dest(bases.dist + 'assets/font/'));
 
- gulp.src('assets/js/jp-prefecture.min.js')
+ gulp.src('assets/js/*.min.js')
   .pipe(gulp.dest(bases.dist + 'assets/js/'));
 });
 

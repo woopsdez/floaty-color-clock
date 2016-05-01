@@ -52,9 +52,9 @@ function extractWeatherData (jsonp) {
 	var re = /^[^{]*({.*})[^}]*$/;
 	var data = jsonp.match(re);
 	if (data) {
-		var weatherData = JSON.parse(data[1])
-		processWeatherData (weatherData)
-	};
+		var weatherData = JSON.parse(data[1]);
+		processWeatherData (weatherData);
+	}
 }
 
 function processWeatherData (data) {
@@ -70,19 +70,19 @@ function processWeatherData (data) {
 		var period = data.pref.area[key].info[0].rainfallchance.period; //長いので一時格納			
 
 		for (var i = 0; i < period.length; i++) { // periodに格納している数だけ繰り返す
-			var data = period[i]; // periodをdataに入れる
+			data = period[i]; // periodをdataに入れる
 			// --- 天気の処理 ---
 			// 降水確立の数字をアイコンにマッピング
 			if ( data.content <= 30 ) {
-				var iconClass = "wi wi-day-sunny";
+				iconClass = "wi wi-day-sunny";
 			}else
 			if ( data.content > 31 && data.content <= 60 ) {
-				var iconClass = "wi wi-cloudy";
+				iconClass = "wi wi-cloudy";
 			}else
 			if ( data.content >= 61){
-				var iconClass = "wi wi-rain";
+				iconClass = "wi wi-rain";
 			}else{
-				var iconClass = "fa fa-question";
+				iconClass = "fa fa-question";
 			}
 
 			// 長ったらしいパスを格納
@@ -97,7 +97,7 @@ function processWeatherData (data) {
 		var jp = jpPrefecture;
 		var prefNameEn = jp.prefConvert(prefName, "en");
 
-		console.log(prefNameEn)
+		console.log(prefNameEn);
 		$("#areaName small").text(prefNameEn);
 		$("#pref").val(String(prefNum));
 
@@ -212,7 +212,7 @@ function setTextColor(e, colorName){
 	$(e).on('click', function(){
 		localStorage.setItem('color', colorName);
 		$('.detail').css("color", colorName);
-		$('.bg img').attr('src','assets/img/rotateGround-' + localStorage.color + '.png')
+		$('.bg img').attr('src','assets/img/rotateGround-' + localStorage.color + '.png');
 	});
 }
 setTextColor('#textWhite', 'white');
@@ -270,6 +270,8 @@ function exitFullscreen() {
 if(typeof window.orientation != "undefined" || (document.uniqueID && document.documentMode < 11)){
 	btn.style.display = "none";
 }
+
+$('#fullscreenSwitch').on('click', requestFullscreen);
 
 // ====================
 // Google Analytics
