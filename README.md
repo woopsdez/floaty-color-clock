@@ -22,7 +22,9 @@ Produced for the javascript of learning.
 ## TODO
 やらないかもしれない
 
-* Chrome エクステンション化
+* **Done!** <del>Chrome エクステンション化</del>
 * 書体の追加
 * Google カレンダーからのスケジュールの取得、表示
 * ゴミの日 Notice
+* 多言語対応
+* アニメーションを維持したまま、背景色を変更
