@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="1024px" height="1024px" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.7.2 (28276) - http://www.bohemiancoding.com/sketch -->
+    <title>1024</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <ellipse id="path-1" cx="485.404624" cy="485.5" rx="484.765896" ry="484.667229"></ellipse>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="1024">
+            <g id="icon" transform="translate(28.000000, 27.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="Clock-Board" fill="#3B66AB" xlink:href="#path-1"></use>
+                <g id="Clock-Hand" mask="url(#mask-2)" fill="#FFFFFF">
+                    <g transform="translate(377.000000, 210.000000)">
+                        <path d="M3.1253835,1.69924136 L3.1253833,0.14118449 L311.167193,0.14118449 L311.167193,100.82617 L102.07603,100.826167 L102.07603,171.107832 L252.163796,171.107832 L252.163796,271.792817 L102.07603,271.792814 L102.07603,530.818599 L1.39104467,530.818599 L1.39104917,1.69924159 L3.1253835,1.69924136 Z" id="Combined-Shape"></path>
+                        <polygon id="Shadow" fill-opacity="0.5" transform="translate(215.265288, 625.213902) rotate(-234.000000) translate(-215.265288, -625.213902) " points="265.662492 395.946253 164.977507 395.946253 164.868083 854.481551 265.553064 854.481538"></polygon>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
