@@ -1,42 +1,21 @@
 {
-  "manifest_version": 1.0,
+  "manifest_version": 2,
   "name": "Floaty Color Colock",
   "description": "Clear time when open new tabs",
   "version": "1.0",
   "icons": {
-    "16": "assets/img/icon/icon_16.png",
-    "48": "assets/img/icon/icon_48.png",
-    "128": "assets/img/icon/icon_128.png"
+    "16": "assets/img/icons/icon_16.png",
+    "48": "assets/img/icons/icon_48.png",
+    "128": "assets/img/icons/icon_128.png"
   },
-  "background": {
-    "scripts": [
-      "js/background.js"
-    ],
-    "persistent": false
-  },
-  "browser_action": {
-    "default_icon": {
-      "19": "images/icon/icon_19.png",
-      "38": "images/icon/icon_38.png"
-    },
-    "default_title": "Link Checker",
-    "default_popup": "popup.html"
-  },
-  "content_scripts": [
+  "background":
     {
-      "matches": [
-        "http://*/*",
-        "https://*/*"
-      ],
-      "css": ["css/contents_style.css"],
-      "js": ["js/content_scripts/common.js"]
-    }
-  ],
-  "permissions": [
-    "tabs",
-    "https://*/*",
-    "http://*/*",
-    "storage",
-    "webNavigation"
-  ]
+      "scripts": ["assets/js/jquery.min.js", "assets/js/floaty-color-clock.js", "assets/js/jp-prefecture.min.js"],
+      "persistent": false
+    },
+  "chrome_url_overrides": {
+    "newtab": "http://woopsdez.github.io/floaty-color-clock/"
+  },
+  "permissions": [ "activeTab", "http://www.drk7.jp/"],
+  "content_security_policy": "script-src 'self' https://www.google-analytics.com; object-src 'self'"
 }

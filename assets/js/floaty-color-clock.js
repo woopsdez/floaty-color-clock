@@ -59,8 +59,10 @@ var prefNum = 13;
 if (localStorage.prefNum !== undefined) {
 	console.log('「' + localStorage.prefNum + '」があるよ');
 	prefNum = localStorage.prefNum;
+	$.get('http://www.drk7.jp/weather/json/'+ prefNum +'.js', extractWeatherData);
 	$("#pref").val(String(prefNum));
-	$("body").append("<script src=\"http://www.drk7.jp/weather/json/" + prefNum + ".js\"></script>");
+} else {
+	localStorage.setItem('prefNum', prefNum);
 }
 
 // 地域の変更
@@ -68,26 +70,33 @@ $("#pref").change(
 	function(){
 		prefNum = $('select option:selected').val();
 		localStorage.setItem('prefNum', prefNum);
-		$("body").append("<script src=\"http://www.drk7.jp/weather/json/" + prefNum + ".js\"></script>");
+		$.get('http://www.drk7.jp/weather/json/'+ prefNum +'.js', extractWeatherData);
 		$('#area').remove();
 		$('#setArea').append('<select id="area" name="ara"></select>');
 	}
 );
 
+function extractWeatherData (jsonp) {
+	var re = /^[^{]*({.*})[^}]*$/;
+	var data = jsonp.match(re);
+	if (data) {
+		var weatherData = JSON.parse(data[1])
+		processWeatherData (weatherData)
+	};
+}
 
-drk7jpweather = { // objectを定義
-	"callback" : function(json){ // 無名関数でcallbackを定義
-	  // --- データ取得 ---
+function processWeatherData (data) {
+	// --- データ取得 ---
 		// 地域データを取得
-		prefName = json.pref.id;
-		var area = json.pref.area;
+		prefName = data.pref.id;
+		var area = data.pref.area;
 		for (var key in area){ // areaのプロパティ名をkeyに入れる
 			areaName = key;
 			$("#area").append('<option value="'+ key +'">'+ key +'</option>');
 		}
 
 		// 降水確立を取得
-		var period = json.pref.area[key].info[0].rainfallchance.period; //長いので一時格納			
+		var period = data.pref.area[key].info[0].rainfallchance.period; //長いので一時格納			
 
 		// 処理用の変数や配列に格納
 		var data, num, iconImg, max, min, average;
@@ -132,7 +141,6 @@ drk7jpweather = { // objectを定義
 		var prefNameEn = jp.prefConvert(prefName, "en");
 		$("#areaName small").text(prefNameEn);
 	}
-};
 
 // 取得した時間をHTMLに書き込む
 function refleshTime (){
@@ -144,6 +152,7 @@ function refleshTime (){
 	$('.bg img').css('transform', 'rotate(-'+ t.pwd +'deg)').delay(800).addClass('zoomIn').fadeIn();
 }
 
+$.get('http://www.drk7.jp/weather/json/'+ prefNum +'.js', extractWeatherData);
 refleshTime();
 setInterval(refleshTime,1000);
 
@@ -281,3 +290,15 @@ function exitFullscreen() {
 if(typeof window.orientation != "undefined" || (document.uniqueID && document.documentMode < 11)){
 	btn.style.display = "none";
 }
+
+// ====================
+// Google Analytics
+// ====================
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-413655-13', 'auto');
+	ga('send', 'pageview');
