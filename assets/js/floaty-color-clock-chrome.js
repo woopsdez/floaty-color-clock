@@ -48,18 +48,26 @@ function getTime () {
 // 天気情報を取得
 // =====================
 
-drk7jpweather = {
-	"callback" : function(json){
+function extractWeatherData (jsonp) {
+	var re = /^[^{]*({.*})[^}]*$/;
+	var data = jsonp.match(re);
+	if (data) {
+		var weatherData = JSON.parse(data[1]);
+		processWeatherData (weatherData);
+	}
+}
+
+function processWeatherData (data) {
 		// 地域データを取得
-		var prefName = json.pref.id;
-		var area = json.pref.area;
+		var prefName = data.pref.id;
+		var area = data.pref.area;
 		for (var key in area){ // areaのプロパティ名をkeyに入れる
 			var areaName = key;
 			$("#area").append('<option value="'+ key +'">'+ key +'</option>');
 		}
 
 		// 降水確立を取得
-		var period = json.pref.area[key].info[0].rainfallchance.period; //長いので一時格納			
+		var period = data.pref.area[key].info[0].rainfallchance.period; //長いので一時格納			
 
 		for (var i = 0; i < period.length; i++) { // periodに格納している数だけ繰り返す
 			data = period[i]; // periodをdataに入れる
@@ -98,12 +106,11 @@ drk7jpweather = {
 		function(){
 			prefNum = $('select option:selected').val();
 			localStorage.setItem('prefNum', prefNum);
-			$("body").append("<script src=\"http://www.drk7.jp/weather/json/" + prefNum + ".js\"></script>");
+			$.get('http://www.drk7.jp/weather/json/'+ prefNum +'.js', extractWeatherData);
 			$('#area').remove();
 			$('#setArea').append('<select id="area" name="ara"></select>');
 		}
 		);
-	}
 }
 
 // 取得した時間をHTMLに書き込む
@@ -125,7 +132,7 @@ if (localStorage.prefNum !== undefined) {
 	localStorage.setItem('prefNum', prefNum);
 }
 
-$("body").append("<script src=\"http://www.drk7.jp/weather/json/" + prefNum + ".js\"></script>");
+$.get('http://www.drk7.jp/weather/json/'+ prefNum +'.js', extractWeatherData);
 refleshTime();
 setInterval(refleshTime,1000);
 
