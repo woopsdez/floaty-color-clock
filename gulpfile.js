@@ -21,7 +21,7 @@ var bases = {
 };
 
 var paths = {
-	scripts: ['assets/js/floaty-color-clock.js'],
+	scripts: ['assets/js/floaty-color-clock-chrome.js'],
 	styles:  ['assets/css/*.css'],
 	html:    ['index.html'],
 	images:  ['assets/img/**/*'],
